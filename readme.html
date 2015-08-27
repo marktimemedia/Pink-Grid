@@ -33,12 +33,18 @@ $rowitems: Number of items per row ( ex. 4 ), used with $autopad. Defaults to 1<
 
 <p>For example: </p>
 
-<p><code>@include pinkgrid( $colspan: 3 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) with 1% padding
-<code>@include pinkgrid( $totalcols: 6, $colspan: 3 )</code> will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding
-<code>@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )</p>
+<p><code>@include pinkgrid( $colspan: 3 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) with 1% padding</p>
 
-<p>Example screenshot:
-<img src="screenshot.png" alt="Screenshot" /></p>
+<p><code>@include pinkgrid( $totalcols: 6, $colspan: 3 )</code> will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding</p>
+
+<p><code>@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )</p>
+
+<h3 id="examplescreenshot:">Example screenshot:</h3>
+
+<figure>
+<img src="screenshot.png" alt="Screenshot" />
+<figcaption>Screenshot</figcaption>
+</figure>
 
 </body>
 </html>

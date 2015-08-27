@@ -24,9 +24,11 @@ Use with media queries for even more responsive goodness!
 For example: 
 
 `@include pinkgrid( $colspan: 3 )` will generate an object that spans 3 out of 12 columns ( 25% ) with 1% padding
+
 `@include pinkgrid( $totalcols: 6, $colspan: 3 )` will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding
+
 `@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )` will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )
 
-Example screenshot:
+###Example screenshot:
 ![Screenshot](screenshot.png)
 
