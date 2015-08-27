@@ -16,7 +16,7 @@ No more dealing with annoying floats, rows, and clears! Using the magic of displ
 <p>Use this to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
 Use with media queries for even more responsive goodness!</p>
 
-<p>&#8216;@include pinkgrid( $align, $totalcols, $colspan, $autopad, $padtop, $padside, $rowitems )&#8217;</p>
+<p><code>@include pinkgrid( $align, $totalcols, $colspan, $autopad, $padtop, $padside, $rowitems )</code></p>
 
 <blockquote>
 <p>$defaultcols: 12 Change this value to set the global number of columns in your grid system
@@ -33,9 +33,12 @@ $rowitems: Number of items per row ( ex. 4 ), used with $autopad. Defaults to 1<
 
 <p>For example: </p>
 
-<p>&#8216;@include pinkgrid( $colspan: 3 )&#8217; will generate an object that spans 3 out of 12 columns ( 25% ) with 1% padding
-&#8216;@include pinkgrid( $totalcols: 6, $colspan: 3 )&#8217; will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding
-&#8216;@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )&#8217; will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )</p>
+<p><code>@include pinkgrid( $colspan: 3 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) with 1% padding
+<code>@include pinkgrid( $totalcols: 6, $colspan: 3 )</code> will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding
+<code>@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )</p>
+
+<p>Example screenshot:
+(screenshot.png)</p>
 
 </body>
 </html>
