@@ -10,16 +10,16 @@ Use with media queries for even more responsive goodness!
 
 `@include pinkgrid( $align, $totalcols, $colspan, $autopad, $padtop, $padside, $rowitems )`
 
-> $defaultcols:	12 	Change this value to set the global number of columns in your grid system
-> $defaultpad:	1%	Change this value to set the global padding percentage in your grid system
+* $defaultcols:	12 	Change this value to set the global number of columns in your grid system
+* $defaultpad:	1%	Change this value to set the global padding percentage in your grid system
 
-> $align:		Vertical-align property 													Defaults to Top
-> $totalcols: 	Number of columns in your grid ( ex: 12 ) 									Defaults to $defaultcols
-> $colspan: 	Number of columns your item spans ( ex: 3 / 12 ) 							Defaults to $defaultcols (100% width)
-> $autopad:		If true, it will automatically calculate side padding based on $rowitems. 	Defaults to False
-> $padside:		If $autopad is false, it will use this value to manually add side padding. 	Defaults to $defaultpad
-> $padtop:		Padding above/below around each item. 										Defaults to $defaultpad
-> $rowitems:	Number of items per row ( ex. 4 ), used with $autopad. 						Defaults to 1
+* $align:		Vertical-align property 													Defaults to Top
+* $totalcols: 	Number of columns in your grid ( ex: 12 ) 									Defaults to $defaultcols
+* $colspan: 	Number of columns your item spans ( ex: 3 / 12 ) 							Defaults to $defaultcols (100% width)
+* $autopad:		If true, it will automatically calculate side padding based on $rowitems. 	Defaults to False
+* $padside:		If $autopad is false, it will use this value to manually add side padding. 	Defaults to $defaultpad
+* $padtop:		Padding above/below around each item. 										Defaults to $defaultpad
+* $rowitems:	Number of items per row ( ex. 4 ), used with $autopad. 						Defaults to 1
 
 For example: 
 
