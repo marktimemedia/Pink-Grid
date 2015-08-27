@@ -28,5 +28,5 @@ For example:
 `@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )` will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )
 
 Example screenshot:
-(screenshot.png)
+![Screenshot](screenshot.png)
 
