@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="pinkgrid">PINK GRID</h1>
+
+<h3 id="sasswidthpaddingpercentagegenerator">Sass Width/Padding Percentage Generator</h3>
+
+<p><em>Version 0.1</em></p>
+
+<p>Inclue this file to easily generate widths/padding for items and build a grid for your site.
+No more dealing with annoying floats, rows, and clears! Using the magic of display: inline-block</p>
+
+<p>Use this to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
+Use with media queries for even more responsive goodness!</p>
+
+<p>&#8216;@include pinkgrid( $align, $totalcols, $colspan, $autopad, $padtop, $padside, $rowitems )&#8217;</p>
+
+<blockquote>
+<p>$defaultcols: 12 Change this value to set the global number of columns in your grid system
+$defaultpad: 1% Change this value to set the global padding percentage in your grid system</p>
+
+<p>$align: Vertical-align property Defaults to Top
+$totalcols: Number of columns in your grid ( ex: 12 ) Defaults to $defaultcols
+$colspan: Number of columns your item spans ( ex: 3 / 12 ) Defaults to $defaultcols (100% width)
+$autopad: If true, it will automatically calculate side padding based on $rowitems. Defaults to False
+$padside: If $autopad is false, it will use this value to manually add side padding. Defaults to $defaultpad
+$padtop: Padding above/below around each item. Defaults to $defaultpad
+$rowitems: Number of items per row ( ex. 4 ), used with $autopad. Defaults to 1</p>
+</blockquote>
+
+<p>For example: </p>
+
+<p>&#8216;@include pinkgrid( $colspan: 3 )&#8217; will generate an object that spans 3 out of 12 columns ( 25% ) with 1% padding
+&#8216;@include pinkgrid( $totalcols: 6, $colspan: 3 )&#8217; will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding
+&#8216;@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )&#8217; will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )</p>
+
+</body>
+</html>

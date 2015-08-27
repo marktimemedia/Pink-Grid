@@ -1,0 +1,91 @@
+@import 'pinkgrid';
+
+@font-face {
+    font-family: Equestria-Web;
+    src: url(fonts/Equestria2.ttf.woff);
+}
+
+body {
+	background:#de1e7e;
+	font-size:90px;
+	font-family:"Trebuchet", Sans-Serif;
+	line-height:1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family:"Equestria-Web", "HoboStd", "Comic Sans MS";
+	color:#de1e7e;
+	margin:0;
+	line-height:1.1;
+	padding:20px;
+}
+
+h1 {
+	color:#fff;
+	font-size:70px;
+	text-align:center;
+	letter-spacing:1px;
+}
+
+h2 {
+	font-size:36px;
+}
+
+img {
+	width:100%;
+	height:auto;
+}
+
+.title {
+	width:100%;
+	max-width:1200px;
+	margin:10px auto;
+}
+
+.max {
+	width:100%;
+	max-width:1200px;
+	background:#fff;
+	margin: 0 auto 20px auto;
+}
+
+
+.item {
+	border: 1px dotted blue;
+	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5% );
+	
+	&:nth-of-type(4n+4) {
+		@include pinkgrid( $colspan: 12 );
+	}
+}
+
+.item2 {
+	border: 1px dotted blue;
+	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5% );
+}
+
+.item21 {
+	@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 );
+
+}
+
+.item22 {
+	@include pinkgrid( $colspan: 8, $autopad: true, $rowitems: 3 );
+}
+
+.item23 {
+	@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 );
+
+}
+
+.item24 {
+	@include pinkgrid( $colspan: 20 );
+}
+
+.item25, .item26, .item27, .item28 {
+	@include pinkgrid( $align: bottom, $colspan: 3, $padside: 2%, $padtop: 5% );
+}
+
+.inner-box {
+	border:1px solid #000;
+}

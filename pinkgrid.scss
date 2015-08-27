@@ -1,0 +1,46 @@
+$defaultcols: 12; 
+$defaultpad: 1%;
+
+* {
+	box-sizing: border-box;
+	line-height: 1;
+}
+
+/* 	PINK GRID
+* 	Sass Width Percentage Generator
+*
+*	$align:			Vertical-align property 													Defaults to Top
+* 	$totalcols: 	Number of columns in your grid ( ex: 12 ) 									Defaults to $defaultcols
+* 	$colspan: 		Number of columns your item spans ( ex: 3 / 12 ) 							Defaults to $defaultcols (100% width)
+*	$autopad:		If true, it will automatically calculate side padding based on $rowitems. 	Defaults to False
+*	$padside:		If $autopad is false, it will use this value to manually add side padding. 	Defaults to $defaultpad
+*	$padtop:		Percentage padding above/below around each item. 							Defaults to $defaultpad
+*	$rowitems:		Number of items per row ( ex. 4 ), used with $autopad. 						Defaults to 1
+*			
+*
+*/
+
+@mixin pinkgrid( $align: top, $totalcols: $defaultcols, $colspan: $defaultcols, $autopad: false, $padtop: $defaultpad, $padside: $defaultpad, $rowitems: 1) {
+
+	$itempad: 10% / $rowitems;
+
+	$itemwidth: ( 100% / $totalcols * $colspan );
+
+	display:inline-block;
+	margin-right: -.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	vertical-align: $align;
+	width: $itemwidth;
+
+	@if $autopad {
+		padding: $padtop $itempad;
+	}
+
+	@else {
+		padding: $padtop $padside;
+	}
+
+	@if $colspan > $totalcols {
+		width:100%;
+	}
+		
+}
