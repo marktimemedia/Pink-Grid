@@ -4,30 +4,37 @@
 	<meta charset="utf-8"/>
 </head>
 <body>
-<h1 id="pinkgrid">PINK GRID</h1>
+<h1 id="pinkgridpinkrow">PINK GRID &amp; PINK ROW</h1>
 
-<h3 id="sasswidthpaddingpercentagegenerator">Sass Width/Padding Percentage Generator</h3>
+<h3 id="sasswidthpaddingpercentagegenerators">Sass Width/Padding Percentage Generators</h3>
 
 <p><em>Version 0.1</em></p>
 
 <p>Inclue this file to easily generate widths/padding for items and build a grid for your site.
 No more dealing with annoying floats, rows, and clears! Using the magic of display: inline-block</p>
 
-<p>Use this to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
+<p>Use <code>@include pinkgrid</code> to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
+Use<code>@include pinkrow</code> to remove the outer padding
 Use with media queries for even more responsive goodness!</p>
 
-<p><code>@include pinkgrid( $align, $totalcols, $colspan, $autopad, $padtop, $padside, $rowitems )</code></p>
+<p><code>@include pinkgrid( $align, $totalcols, $colspan, $padtop, $padside )</code></p>
 
 <ul>
-<li><p>$defaultcols: 12 Change this value to set the global number of columns in your grid system</p></li>
-<li><p>$defaultpad: 1% Change this value to set the global padding percentage in your grid system</p></li>
-<li><p>$align: Vertical-align property Defaults to Top</p></li>
-<li><p>$totalcols: Number of columns in your grid ( ex: 12 ) Defaults to $defaultcols</p></li>
-<li><p>$colspan: Number of columns your item spans ( ex: 3 / 12 ) Defaults to $defaultcols (100% width)</p></li>
-<li><p>$autopad: If true, it will automatically calculate side padding based on $rowitems. Defaults to False</p></li>
-<li><p>$padside: If $autopad is false, it will use this value to manually add side padding. Defaults to $defaultpad</p></li>
-<li><p>$padtop: Padding above/below around each item. Defaults to $defaultpad</p></li>
-<li><p>$rowitems: Number of items per row ( ex. 4 ), used with $autopad. Defaults to 1</p></li>
+<li>$defaultcols: 12 Change this value to set the global number of columns in your grid system</li>
+<li>$defaultpad: 1% Change this value to set the global padding percentage in your grid system</li>
+<li>$align: Vertical-align property Defaults to Top</li>
+<li>$totalcols: Number of columns in your grid ( ex: 12 ) Defaults to $defaultcols</li>
+<li>$colspan: Number of columns your item spans ( ex: 3 / 12 ) Defaults to $defaultcols (100% width)</li>
+<li>$autopad: If true, it will automatically calculate side padding based on $rowitems. Defaults to False</li>
+<li>$padside: If $autopad is false, it will use this value to manually add side padding. Defaults to $defaultpad</li>
+<li>$padtop: Padding above/below around each item. Defaults to 0</li>
+</ul>
+
+<p><code>@include pinkrow( $rowitems, $skipitems )</code></p>
+
+<ul>
+<li>$rowitems: Number of items per row ( ex. 4 ), used with $autopad. Defaults to 1</li>
+<li>$skipitems: For alternating row layouts, # of items to skip in nth-of-type calcs Defaults to 0</li>
 </ul>
 
 <p>For example: </p>
@@ -36,14 +43,14 @@ Use with media queries for even more responsive goodness!</p>
 
 <p><code>@include pinkgrid( $totalcols: 6, $colspan: 3 )</code> will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding</p>
 
-<p><code>@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will automatically generate padding values based on having three items total in the row ( good for not wanting to do the math on an uneven number of items for example )</p>
+<p><code>@include pinkgrid( $colspan: 3 ) @include pinkrow( $rowitems: 4 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will remove the outside padding of the first and last item in each row, based on having 4 items per row</p>
 
-<h3 id="examplescreenshot:">Example screenshot:</h3>
+<p><em>Check out the example html/scss files for more ideas!</em></p>
 
-<figure>
-<img src="screenshot.png" alt="Screenshot" />
-<figcaption>Screenshot</figcaption>
-</figure>
+<h3 id="examplescreenshots:">Example screenshots:</h3>
+
+<p><img src="screenshot.png" alt="Screenshot" />
+<img src="screenshot2.png" alt="Screenshot2" /></p>
 
 </body>
 </html>

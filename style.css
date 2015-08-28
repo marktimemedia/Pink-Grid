@@ -1,6 +1,5 @@
 * {
-  box-sizing: border-box;
-  line-height: 1; }
+  box-sizing: border-box; }
 
 /* 	PINK GRID
 * 	Sass Width Percentage Generator
@@ -8,11 +7,15 @@
 *	$align:			Vertical-align property 													Defaults to Top
 * 	$totalcols: 	Number of columns in your grid ( ex: 12 ) 									Defaults to $defaultcols
 * 	$colspan: 		Number of columns your item spans ( ex: 3 / 12 ) 							Defaults to $defaultcols (100% width)
-*	$autopad:		If true, it will automatically calculate side padding based on $rowitems. 	Defaults to False
 *	$padside:		If $autopad is false, it will use this value to manually add side padding. 	Defaults to $defaultpad
-*	$padtop:		Percentage padding above/below around each item. 							Defaults to $defaultpad
-*	$rowitems:		Number of items per row ( ex. 4 ), used with $autopad. 						Defaults to 1
+*	$padtop:		Percentage padding above/below around each item. 							Defaults to 0
 *			
+*/
+/* 	PINK ROW
+* 	Sass Row Item Generator
+*
+*	$rowitems:		Number of items per row ( ex. 4 ), used with $autorow. 						Defaults to 1
+*	$skipitems:		For alternating row layouts, # of items to skip in nth-of-type calc			Defaults to 0
 *
 */
 @font-face {
@@ -62,12 +65,18 @@ img {
   vertical-align: top;
   width: 33.3333333333%;
   padding: 5% 2%; }
+  .item:nth-of-type(4n+1) {
+    padding-left: 0; }
+  .item:nth-of-type(4n+3) {
+    padding-right: 0; }
   .item:nth-of-type(4n+4) {
     display: inline-block;
     margin-right: -.275em;
     vertical-align: top;
     width: 100%;
-    padding: 1% 1%; }
+    padding: 0 1%;
+    padding-left: 0;
+    padding-right: 0; }
 
 .item2 {
   border: 1px dotted blue;
@@ -77,41 +86,48 @@ img {
   width: 33.3333333333%;
   padding: 5% 2%; }
 
+.row3:nth-of-type(3n+1) {
+  padding-left: 0; }
+.row3:nth-of-type(3n+3) {
+  padding-right: 0; }
+
 .item21 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 16.6666666667%;
-  padding: 1% 3.3333333333%; }
+  padding: 0 1%; }
 
 .item22 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 66.6666666667%;
-  padding: 1% 3.3333333333%; }
+  padding: 0 1%; }
 
 .item23 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 16.6666666667%;
-  padding: 1% 3.3333333333%; }
+  padding: 0 1%; }
 
 .item24 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 166.6666666667%;
-  padding: 1% 1%;
-  width: 100%; }
+  padding: 15px 1%;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0; }
 
 .item25, .item26, .item27, .item28 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: bottom;
   width: 25%;
-  padding: 5% 2%; }
+  padding: 10px 2%; }
 
 .inner-box {
   border: 1px solid #000; }

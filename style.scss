@@ -53,9 +53,11 @@ img {
 .item {
 	border: 1px dotted blue;
 	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5% );
+	@include pinkrow( $rowitems: 3, $skipitems: 1 );
 	
 	&:nth-of-type(4n+4) {
 		@include pinkgrid( $colspan: 12 );
+		@include pinkrow( $rowitems: 1 );
 	}
 }
 
@@ -64,26 +66,30 @@ img {
 	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5% );
 }
 
-.item21 {
-	@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 );
+.row3 {
+	@include pinkrow( $rowitems: 3 );
+}
 
+.item21 {
+	@include pinkgrid( $colspan: 2 );
 }
 
 .item22 {
-	@include pinkgrid( $colspan: 8, $autopad: true, $rowitems: 3 );
+	@include pinkgrid( $colspan: 8 );
 }
 
 .item23 {
-	@include pinkgrid( $colspan: 2, $autopad: true, $rowitems: 3 );
+	@include pinkgrid( $colspan: 2 );
 
 }
 
 .item24 {
-	@include pinkgrid( $colspan: 20 );
+	@include pinkgrid( $colspan: 20, $padtop: 15px );
+	@include pinkrow( $rowitems: -5 );
 }
 
 .item25, .item26, .item27, .item28 {
-	@include pinkgrid( $align: bottom, $colspan: 3, $padside: 2%, $padtop: 5% );
+	@include pinkgrid( $align: bottom, $colspan: 3, $padside: 2%, $padtop: 10px );
 }
 
 .inner-box {
