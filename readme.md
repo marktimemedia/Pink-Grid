@@ -23,7 +23,7 @@ Use with media queries for even more responsive goodness!
 
 `@include pinkrow( $rowitems, $skipitems )`
 
-* $rowitems:	Number of items per row ( ex. 4 ), used with $autopad. 						Defaults to 1
+* $rowitems:	Number of items per row ( ex. 4 )					 						Defaults to 1
 * $skipitems:	For alternating row layouts, # of items to skip in nth-of-type calcs		Defaults to 0
 
 

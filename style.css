@@ -14,7 +14,7 @@
 /* 	PINK ROW
 * 	Sass Row Item Generator
 *
-*	$rowitems:		Number of items per row ( ex. 4 ), used with $autorow. 						Defaults to 1
+*	$rowitems:		Number of items per row ( ex. 4 )											Defaults to 1
 *	$skipitems:		For alternating row layouts, # of items to skip in nth-of-type calc			Defaults to 0
 *
 */
