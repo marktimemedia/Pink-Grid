@@ -9,46 +9,235 @@
 
 <body>
 	<header class="title">
-		<h1>Pink Grid</h1>
+		<h1>Pink Magic | Pink Grid | Pink Row</h1>
 	</header>
+
 	<div class="max">
-		<h2>Using Grids To Easily Create Awesome Layouts</h2>
-		<div class="item item1">
+		<h2>Magic Row In Action (Fully Responsive)</h2>
+		<p>I set a max-height on these items so you can easily see what the grid is doing. Here is the Scss for the grid:</p>
+		<pre>
+.magic {
+	@include pinkmagic( $rowitems: 8, $altrow: 4);
+
+	@for $i from 9 through 12 {
+
+		&:nth-of-type(12n+#{$i}) {
+			@include pinkmagic( $rowitems: 4);
+			background-color:#bada55;
+		} 
+	}
+}
+		</pre>
+		<div class="magic item3" id="item31">
 			<div class="inner-box">
 				<img src="images/fixed8.png">
 			</div>
 		</div>
-		<div class="item item2">
+		<div class="magic item3" id="item32">
 			<div class="inner-box">
 				<img src="images/fixed2.png">
 			</div>
 		</div>
-		<div class="item item3">
+		<div class="magic item3" id="item33">
 			<div class="inner-box">
 				<img src="images/fixed3.png">
 			</div>
 		</div>
-		<div class="item item4">
+		<div class="magic item3" id="item34">
 			<div class="inner-box">
-				<img src="images/fixed4.png">
+				<img src="images/gallery4.png">
 			</div>
 		</div>
-		<div class="item item5">
+		<div class="magic item3" id="item35">
 			<div class="inner-box">
 				<img src="images/fixed5.png">
 			</div>
 		</div>
-		<div class="item item6">
+		<div class="magic item3" id="item36">
 			<div class="inner-box">
 				<img src="images/fixed6.png">
 			</div>
 		</div>
-		<div class="item item7">
+		<div class="magic item3" id="item37">
 			<div class="inner-box">
 				<img src="images/fixed7.png">
 			</div>
 		</div>
-		<div class="item item8">
+		<div class="magic item3" id="item38">
+			<div class="inner-box">
+				<img src="images/gallery1.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item39">
+			<div class="inner-box">
+				<img src="images/fixed8.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item311">
+			<div class="inner-box">
+				<img src="images/fixed2.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item312">
+			<div class="inner-box">
+				<img src="images/fixed3.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item313">
+			<div class="inner-box">
+				<img src="images/fixed4.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item314">
+			<div class="inner-box">
+				<img src="images/gallery5.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item315">
+			<div class="inner-box">
+				<img src="images/fixed6.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item316">
+			<div class="inner-box">
+				<img src="images/fixed7.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item317">
+			<div class="inner-box">
+				<img src="images/fixed1.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item318">
+			<div class="inner-box">
+				<img src="images/gallery2.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item319">
+			<div class="inner-box">
+				<img src="images/gallery3.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item320">
+			<div class="inner-box">
+				<img src="images/fixed4.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item321">
+			<div class="inner-box">
+				<img src="images/fixed5.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item322">
+			<div class="inner-box">
+				<img src="images/gallery6.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item323">
+			<div class="inner-box">
+				<img src="images/fixed7.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item324">
+			<div class="inner-box">
+				<img src="images/gallery8.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item325">
+			<div class="inner-box">
+				<img src="images/gallery2.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item326">
+			<div class="inner-box">
+				<img src="images/gallery3.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item327">
+			<div class="inner-box">
+				<img src="images/fixed4.png">
+			</div>
+		</div>
+	</div>
+
+	<div class="max">
+		<h2>Using Grids To Easily Create Awesome Layouts</h2>
+		<div class="item" id="item1">
+			<div class="inner-box">
+				<img src="images/fixed8.png">
+			</div>
+		</div>
+		<div class="item" id="item2">
+			<div class="inner-box">
+				<img src="images/fixed2.png">
+			</div>
+		</div>
+		<div class="item" id="item3">
+			<div class="inner-box">
+				<img src="images/fixed3.png">
+			</div>
+		</div>
+		<div class="item" id="item4">
+			<div class="inner-box">
+				<img src="images/fixed4.png">
+			</div>
+		</div>
+		<div class="item" id="item5">
+			<div class="inner-box">
+				<img src="images/fixed5.png">
+			</div>
+		</div>
+		<div class="item" id="item6">
+			<div class="inner-box">
+				<img src="images/fixed6.png">
+			</div>
+		</div>
+		<div class="item" id="item7">
+			<div class="inner-box">
+				<img src="images/fixed7.png">
+			</div>
+		</div>
+		<div class="item" id="item8">
+			<div class="inner-box">
+				<img src="images/fixed1.png">
+			</div>
+		</div>
+		<div class="item" id="item9">
+			<div class="inner-box">
+				<img src="images/fixed8.png">
+			</div>
+		</div>
+		<div class="item" id="item10">
+			<div class="inner-box">
+				<img src="images/fixed2.png">
+			</div>
+		</div>
+		<div class="item" id="item111">
+			<div class="inner-box">
+				<img src="images/fixed3.png">
+			</div>
+		</div>
+		<div class="item" id="item112">
+			<div class="inner-box">
+				<img src="images/fixed4.png">
+			</div>
+		</div>
+		<div class="item" id="item113">
+			<div class="inner-box">
+				<img src="images/fixed5.png">
+			</div>
+		</div>
+		<div class="item" id="item114">
+			<div class="inner-box">
+				<img src="images/fixed6.png">
+			</div>
+		</div>
+		<div class="item" id="item115">
+			<div class="inner-box">
+				<img src="images/fixed7.png">
+			</div>
+		</div>
+		<div class="item" id="item116">
 			<div class="inner-box">
 				<img src="images/fixed1.png">
 			</div>
@@ -57,45 +246,46 @@
 
 	<div class="max">
 		<h2>More Random Examples</h2>
-		<div class="item2 row3 item21">
+		<div class="item2 row3" id="item21">
 			<div class="inner-box">
 				<img src="images/fixed8.png">
 			</div>
 		</div>
-		<div class="item2 row3 item22">
+		<div class="item2 row3" id="item22">
 			<div class="inner-box">
 				<img src="images/fixed2.png">
 			</div>
 		</div>
-		<div class="item2 row3 item23">
+		<div class="item2 row3" id="item23">
 			<div class="inner-box">
 				<img src="images/fixed3.png">
 			</div>
 		</div>
-		<div class="item2 item24">
+		<div class="item2" id="item24">
 			<div class="inner-box">
 				<img src="images/fixed4.png">
 			</div>
 		</div>
-		<div class="item2 item25">
+		<div class="item2" id="item25">
 			<div class="inner-box">
 				<img src="images/fixed5.png">
 			</div>
 		</div>
-		<div class="item2 item26">
+		<div class="item2" id="item26">
 			<div class="inner-box">
 				<img src="images/fixed6.png">
 			</div>
 		</div>
-		<div class="item2 item27">
+		<div class="item2" id="item27">
 			<div class="inner-box">
 				<img src="images/fixed7.png">
 			</div>
 		</div>
-		<div class="item2 item28">
+		<div class="item2" id="item28">
 			<div class="inner-box">
 				<img src="images/fixed1.png">
 			</div>
 		</div>
 	</div>
+
 </body>

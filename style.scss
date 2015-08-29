@@ -7,7 +7,7 @@
 
 body {
 	background:#de1e7e;
-	font-size:90px;
+	font-size:16px;
 	font-family:"Trebuchet", Sans-Serif;
 	line-height:1.4;
 }
@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin:0;
 	line-height:1.1;
 	padding:20px;
+}
+
+p, pre {
+	padding:0 20px;
 }
 
 h1 {
@@ -49,11 +53,14 @@ img {
 	margin: 0 auto 20px auto;
 }
 
+.item, .item2, .item3 {
+	border: 1px dotted blue;
+}
+
 
 .item {
-	border: 1px dotted blue;
 	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5% );
-	@include pinkrow( $rowitems: 3, $skipitems: 1 );
+	@include pinkrow( $rowitems: 3, $skipitems: 1);
 	
 	&:nth-of-type(4n+4) {
 		@include pinkgrid( $colspan: 12 );
@@ -62,33 +69,51 @@ img {
 }
 
 .item2 {
-	border: 1px dotted blue;
 	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5% );
+}
+
+.item3 {
+	max-height:200px;
+	overflow:hidden;
+}
+
+.magic {
+	@include pinkmagic( $rowitems: 8, $altrow: 4);
+
+	@for $i from 9 through 12 {
+
+		&:nth-of-type(12n+#{$i}) {
+			@include pinkmagic( $rowitems: 4);
+			background-color:#bada55;
+		} 
+
+	}
+
 }
 
 .row3 {
 	@include pinkrow( $rowitems: 3 );
 }
 
-.item21 {
+#item21 {
 	@include pinkgrid( $colspan: 2 );
 }
 
-.item22 {
+#item22 {
 	@include pinkgrid( $colspan: 8 );
 }
 
-.item23 {
+#item23 {
 	@include pinkgrid( $colspan: 2 );
 
 }
 
-.item24 {
+#item24 {
 	@include pinkgrid( $colspan: 20, $padtop: 15px );
 	@include pinkrow( $rowitems: -5 );
 }
 
-.item25, .item26, .item27, .item28 {
+#item25, #item26, #item27, #item28 {
 	@include pinkgrid( $align: bottom, $colspan: 3, $padside: 2%, $padtop: 10px );
 }
 

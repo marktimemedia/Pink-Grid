@@ -4,13 +4,14 @@
 	<meta charset="utf-8"/>
 </head>
 <body>
-<h1 id="pinkgridpinkrow">PINK GRID &amp; PINK ROW</h1>
+<h1 id="pinkmagicpinkgridpinkrow">PINK MAGIC/PINK GRID/PINK ROW</h1>
 
-<h3 id="sasswidthpaddingpercentagegenerators">Sass Width/Padding Percentage Generators</h3>
+<h3 id="sassgridmixinsolutions">Sass Grid Mixin Solutions</h3>
 
 <p><em>Version 0.1</em></p>
 
-<p>Inclue this file to easily generate widths/padding for items and build a grid for your site.
+<p>Inclue this file to easily generate widths/padding for items and build items which conform to a grid for your site.
+Or, use Magic Grid to create a fully responsive equal-sized grid instantly!
 No more dealing with annoying floats, rows, and clears! Using the magic of display: inline-block</p>
 
 <p>Use <code>@include pinkgrid</code> to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
@@ -20,21 +21,39 @@ Use with media queries for even more responsive goodness!</p>
 <p><code>@include pinkgrid( $align, $totalcols, $colspan, $padtop, $padside )</code></p>
 
 <ul>
-<li>$defaultcols: 12 Change this value to set the global number of columns in your grid system</li>
+<li>$defaultcols: 12 - Change this value to set the global number of columns in your grid system</li>
 <li>$defaultpad: 1% Change this value to set the global padding percentage in your grid system</li>
-<li>$align: Vertical-align property Defaults to Top</li>
-<li>$totalcols: Number of columns in your grid ( ex: 12 ) Defaults to $defaultcols</li>
-<li>$colspan: Number of columns your item spans ( ex: 3 / 12 ) Defaults to $defaultcols (100% width)</li>
-<li>$autopad: If true, it will automatically calculate side padding based on $rowitems. Defaults to False</li>
-<li>$padside: If $autopad is false, it will use this value to manually add side padding. Defaults to $defaultpad</li>
-<li>$padtop: Padding above/below around each item. Defaults to 0</li>
+<li>$align: Vertical-align property - Defaults to Top</li>
+<li>$totalcols: Number of columns in your grid ( ex: 12 ) - Defaults to $defaultcols</li>
+<li>$colspan: Number of columns your item spans ( ex: 3 / 12 ) - Defaults to $defaultcols (100% width)</li>
+<li>$padside: Padding left/right of each item. - Defaults to $defaultpad</li>
+<li>$padtop: Padding above/below around each item. - Defaults to 0</li>
 </ul>
 
 <p><code>@include pinkrow( $rowitems, $skipitems )</code></p>
 
 <ul>
-<li>$rowitems: Number of items per row ( ex. 4 ) Defaults to 1</li>
-<li>$skipitems: For alternating row layouts, # of items to skip in nth-of-type calcs Defaults to 0</li>
+<li>$rowitems: Number of items per row ( ex. 4 ) - Defaults to 1</li>
+<li>$skipitems: Create alternating row layouts (only numbers evenly divisible into $rowitems) - Defaults to 0</li>
+</ul>
+
+<p><code>@include pinkmagic( $rowitems, $padtop, $padside, $align, $altrow )</code></p>
+
+<ul>
+<li><p>$magicrow: 4; - Change this value to set the global default number of items per row</p></li>
+<li><p>$magictop: 10px; - Change this value to set the global default of top padding</p></li>
+<li><p>$magicside: 2%; - Change this value to set the global default of side padding</p></li>
+<li><p>$magicalign: top; - Change this value to set the global default of vertical-align</p></li>
+<li><p>$tiny-bp: 300px; - Change this value to set your tiny breakpoint</p></li>
+<li><p>$sm-bp: 480px; - Change this value to set your small breakpoint</p></li>
+<li><p>$med-bp: 720px; - Change this value to set your medium breakpoint</p></li>
+<li><p>$lg-bp: 980px; - Change this value to set your large breakpoint</p></li>
+<li><p>$xl-bp: 1200px; - Change this value to set your x-large breakpoint</p></li>
+<li><p>$rowitems: Number of items per row ( ex. 4 ) - Defaults to 1</p></li>
+<li><p>$padside: If $autopad is false, it will use this value to manually add side padding. - Defaults to $defaultpad</p></li>
+<li><p>$padtop: Percentage padding above/below around each item. - Defaults to $magictop</p></li>
+<li><p>$align Vertical-align property - Defaults to Top</p></li>
+<li><p>$altrow: Create alternating row layouts (only numbers evenly divisible into $rowitems) - Defaults to 0</p></li>
 </ul>
 
 <p>For example: </p>
@@ -44,6 +63,8 @@ Use with media queries for even more responsive goodness!</p>
 <p><code>@include pinkgrid( $totalcols: 6, $colspan: 3 )</code> will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding</p>
 
 <p><code>@include pinkgrid( $colspan: 3 ) @include pinkrow( $rowitems: 4 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will remove the outside padding of the first and last item in each row, based on having 4 items per row</p>
+
+<p><code>@include pinkmagic( $rowitems: 8 )</code> will generate a fully responsive grid for all items with that class, with 8 items across, complete with breakpoints</p>
 
 <p><em>Check out the example html/scss files for more ideas!</em></p>
 

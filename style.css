@@ -4,18 +4,30 @@
 /* 	PINK GRID
 * 	Sass Width Percentage Generator
 *
-*	$align:			Vertical-align property 													Defaults to Top
-* 	$totalcols: 	Number of columns in your grid ( ex: 12 ) 									Defaults to $defaultcols
-* 	$colspan: 		Number of columns your item spans ( ex: 3 / 12 ) 							Defaults to $defaultcols (100% width)
-*	$padside:		If $autopad is false, it will use this value to manually add side padding. 	Defaults to $defaultpad
-*	$padtop:		Percentage padding above/below around each item. 							Defaults to 0
+*	$align:			Vertical-align property 											Defaults to Top
+* 	$totalcols: 	Number of columns in your grid ( ex: 12 ) 							Defaults to $defaultcols
+* 	$colspan: 		Number of columns your item spans ( ex: 3 / 12 ) 					Defaults to $defaultcols (100% width)
+*	$padside:		Percentage padding left/right of each item.							Defaults to $defaultpad
+*	$padtop:		Percentage padding above/below around each item. 					Defaults to 0
 *			
 */
 /* 	PINK ROW
 * 	Sass Row Item Generator
+*	Built in conjunction with Pink Grid
 *
 *	$rowitems:		Number of items per row ( ex. 4 )											Defaults to 1
 *	$skipitems:		For alternating row layouts, # of items to skip in nth-of-type calc			Defaults to 0
+*
+*/
+/* 	PINK MAGIC ROW
+* 	Complete responsive grid solution for equally sized items per row. 
+*	Includes a space to define your media query breakpoints (based on min-width)
+*
+*	$rowitems:		Number of items per row ( ex. 4 )													Defaults to 1
+*	$padside:		Padding to the left/right of each item 												Defaults to $magicside
+*	$padtop:		Padding above/below around each item. 												Defaults to $magictop
+* 	$align 			Vertical-align property 															Defaults to Top
+*	$altrow:		Create alternating row layouts (only for numbers evenly divisible into $rowitems)	Defaults to 0
 *
 */
 @font-face {
@@ -23,7 +35,7 @@
   src: url(fonts/Equestria2.ttf.woff); }
 body {
   background: #de1e7e;
-  font-size: 90px;
+  font-size: 16px;
   font-family: "Trebuchet", Sans-Serif;
   line-height: 1.4; }
 
@@ -33,6 +45,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   line-height: 1.1;
   padding: 20px; }
+
+p, pre {
+  padding: 0 20px; }
 
 h1 {
   color: #fff;
@@ -58,8 +73,10 @@ img {
   background: #fff;
   margin: 0 auto 20px auto; }
 
+.item, .item2, .item3 {
+  border: 1px dotted blue; }
+
 .item {
-  border: 1px dotted blue;
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
@@ -79,40 +96,176 @@ img {
     padding-right: 0; }
 
 .item2 {
-  border: 1px dotted blue;
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 33.3333333333%;
   padding: 5% 2%; }
 
+.item3 {
+  max-height: 200px;
+  overflow: hidden; }
+
+.magic {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: -.275em;
+  width: 100%;
+  padding: 10px 0; }
+  @media only screen and (min-width: 480px) and (max-width: 720px) {
+    .magic {
+      width: 50%;
+      padding: 10px 2%; }
+      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+3) {
+        padding-left: 0; }
+      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+5) {
+        padding-left: 0; }
+      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+7) {
+        padding-left: 0; }
+      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+9) {
+        padding-left: 0; }
+      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+2), .magic:nth-of-type(12n+2) {
+        padding-right: 0; }
+      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+2), .magic:nth-of-type(12n+4) {
+        padding-right: 0; }
+      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+2), .magic:nth-of-type(12n+6) {
+        padding-right: 0; } }
+  @media only screen and (min-width: 720px) and (max-width: 980px) {
+    .magic {
+      width: 25%;
+      padding: 10px 2%; }
+      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+5) {
+        padding-left: 0; }
+      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+4) {
+        padding-right: 0; } }
+  @media only screen and (min-width: 980px) {
+    .magic {
+      width: 12.5%;
+      padding: 10px 2%; }
+      .magic:nth-of-type(12n+1) {
+        padding-left: 0; }
+      .magic:nth-of-type(12n+8) {
+        padding-right: 0; } }
+  .magic:nth-of-type(12n+9) {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -.275em;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #bada55; }
+    @media only screen and (min-width: 480px) and (max-width: 980px) {
+      .magic:nth-of-type(12n+9) {
+        width: 50%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+9):nth-of-type(2n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+9):nth-of-type(2n+2) {
+          padding-right: 0; } }
+    @media only screen and (min-width: 980px) {
+      .magic:nth-of-type(12n+9) {
+        width: 25%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+9):nth-of-type(4n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+9):nth-of-type(4n+4) {
+          padding-right: 0; } }
+  .magic:nth-of-type(12n+10) {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -.275em;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #bada55; }
+    @media only screen and (min-width: 480px) and (max-width: 980px) {
+      .magic:nth-of-type(12n+10) {
+        width: 50%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+10):nth-of-type(2n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+10):nth-of-type(2n+2) {
+          padding-right: 0; } }
+    @media only screen and (min-width: 980px) {
+      .magic:nth-of-type(12n+10) {
+        width: 25%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+10):nth-of-type(4n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+10):nth-of-type(4n+4) {
+          padding-right: 0; } }
+  .magic:nth-of-type(12n+11) {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -.275em;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #bada55; }
+    @media only screen and (min-width: 480px) and (max-width: 980px) {
+      .magic:nth-of-type(12n+11) {
+        width: 50%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+11):nth-of-type(2n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+11):nth-of-type(2n+2) {
+          padding-right: 0; } }
+    @media only screen and (min-width: 980px) {
+      .magic:nth-of-type(12n+11) {
+        width: 25%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+11):nth-of-type(4n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+11):nth-of-type(4n+4) {
+          padding-right: 0; } }
+  .magic:nth-of-type(12n+12) {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -.275em;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #bada55; }
+    @media only screen and (min-width: 480px) and (max-width: 980px) {
+      .magic:nth-of-type(12n+12) {
+        width: 50%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+12):nth-of-type(2n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+12):nth-of-type(2n+2) {
+          padding-right: 0; } }
+    @media only screen and (min-width: 980px) {
+      .magic:nth-of-type(12n+12) {
+        width: 25%;
+        padding: 10px 2%; }
+        .magic:nth-of-type(12n+12):nth-of-type(4n+1) {
+          padding-left: 0; }
+        .magic:nth-of-type(12n+12):nth-of-type(4n+4) {
+          padding-right: 0; } }
+
 .row3:nth-of-type(3n+1) {
   padding-left: 0; }
 .row3:nth-of-type(3n+3) {
   padding-right: 0; }
 
-.item21 {
+#item21 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 16.6666666667%;
   padding: 0 1%; }
 
-.item22 {
+#item22 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 66.6666666667%;
   padding: 0 1%; }
 
-.item23 {
+#item23 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
   width: 16.6666666667%;
   padding: 0 1%; }
 
-.item24 {
+#item24 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: top;
@@ -122,7 +275,7 @@ img {
   padding-left: 0;
   padding-right: 0; }
 
-.item25, .item26, .item27, .item28 {
+#item25, #item26, #item27, #item28 {
   display: inline-block;
   margin-right: -.275em;
   vertical-align: bottom;
