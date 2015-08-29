@@ -7,8 +7,10 @@ Or, use Magic Grid to create a fully responsive equal-sized grid instantly!
 No more dealing with annoying floats, rows, and clears! Using the magic of display: inline-block
 
 Use `@include pinkgrid` to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
-Use`@include pinkrow` to remove the outer padding 
+Use`@include pinkrow` to remove the outer padding.
 Use with media queries for even more responsive goodness!
+
+Don't want to write media queries? If you need evenly-sized items per row (like a photo gallery or content blocks) just use `@include pinkmagic` and don't even worry about it, because I did all the math for you! Works for any number items per row :)
 
 `@include pinkgrid( $align, $totalcols, $colspan, $padtop, $padside )`
 
