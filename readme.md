@@ -58,6 +58,8 @@ For example:
 
 *Check out the example html/scss files for more ideas!*
 
+Here's a [live version of the site](http://michelleschulp.pink/pink-grid) to see examples.
+
 ###Example screenshots:
 ![Screenshot](screenshot.png)
 ![Screenshot2](screenshot2.png)
