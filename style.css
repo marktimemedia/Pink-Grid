@@ -15,19 +15,21 @@
 * 	Sass Row Item Generator
 *	Built in conjunction with Pink Grid
 *
-*	$rowitems:		Number of items per row ( ex. 4 )											Defaults to 1
-*	$skipitems:		For alternating row layouts, # of items to skip in nth-of-type calc			Defaults to 0
+*	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+*	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+*	$after:			Alternating row layouts: elements after this row 		Defaults to 0
 *
 */
 /* 	PINK MAGIC ROW
 * 	Complete responsive grid solution for equally sized items per row. 
 *	Includes a space to define your media query breakpoints (based on min-width)
 *
-*	$rowitems:		Number of items per row ( ex. 4 )													Defaults to 1
-*	$padside:		Padding to the left/right of each item 												Defaults to $magicside
-*	$padtop:		Padding above/below around each item. 												Defaults to $magictop
-* 	$align 			Vertical-align property 															Defaults to Top
-*	$altrow:		Create alternating row layouts (only for numbers evenly divisible into $rowitems)	Defaults to 0
+*	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+*	$padside:		Padding to the left/right of each item 					Defaults to $magicside
+*	$padtop:		Padding above/below around each item. 					Defaults to $magictop
+* 	$align 			Vertical-align property 								Defaults to Top
+*	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+*	$after:			Alternating row layouts: elements after this row 		Defaults to 0
 *
 */
 @font-face {
@@ -79,7 +81,7 @@ img {
 .item {
   display: inline-block;
   margin-right: -.275em;
-  vertical-align: top;
+  vertical-align: middle;
   width: 33.3333333333%;
   padding: 5% 2%; }
   .item:nth-of-type(4n+1) {
@@ -112,131 +114,96 @@ img {
   margin-right: -.275em;
   width: 100%;
   padding: 10px 0; }
-  @media only screen and (min-width: 480px) and (max-width: 720px) {
+  @media only screen and (min-width: 480px) and (max-width: 980px) {
     .magic {
-      width: 50%;
+      width: 33.3333333333%;
       padding: 10px 2%; }
-      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+3) {
+      .magic:nth-of-type(11n+1), .magic:nth-of-type(11n+4) {
         padding-left: 0; }
-      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+5) {
-        padding-left: 0; }
-      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+7) {
-        padding-left: 0; }
-      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+9) {
-        padding-left: 0; }
-      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+2), .magic:nth-of-type(12n+2) {
-        padding-right: 0; }
-      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+2), .magic:nth-of-type(12n+4) {
-        padding-right: 0; }
-      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+2), .magic:nth-of-type(12n+6) {
-        padding-right: 0; } }
-  @media only screen and (min-width: 720px) and (max-width: 980px) {
-    .magic {
-      width: 25%;
-      padding: 10px 2%; }
-      .magic:nth-of-type(12n+1), .magic:nth-of-type(12n+5) {
-        padding-left: 0; }
-      .magic:nth-of-type(12n+8), .magic:nth-of-type(12n+4) {
+      .magic:nth-of-type(11n+3), .magic:nth-of-type(11n+6) {
         padding-right: 0; } }
   @media only screen and (min-width: 980px) {
     .magic {
-      width: 12.5%;
+      width: 16.6666666667%;
       padding: 10px 2%; }
-      .magic:nth-of-type(12n+1) {
+      .magic:nth-of-type(11n+1) {
         padding-left: 0; }
-      .magic:nth-of-type(12n+8) {
+      .magic:nth-of-type(11n+6) {
         padding-right: 0; } }
-  .magic:nth-of-type(12n+9) {
+  .magic:nth-of-type(11n+7) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
     padding: 10px 0;
     background-color: #bada55; }
-    @media only screen and (min-width: 480px) and (max-width: 980px) {
-      .magic:nth-of-type(12n+9) {
+    @media only screen and (min-width: 480px) {
+      .magic:nth-of-type(11n+7) {
         width: 50%;
         padding: 10px 2%; }
-        .magic:nth-of-type(12n+9):nth-of-type(2n+1) {
+        .magic:nth-of-type(11n+7):nth-of-type(11n+7) {
           padding-left: 0; }
-        .magic:nth-of-type(12n+9):nth-of-type(2n+2) {
+        .magic:nth-of-type(11n+7):nth-of-type(11n+8) {
           padding-right: 0; } }
-    @media only screen and (min-width: 980px) {
-      .magic:nth-of-type(12n+9) {
-        width: 25%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(12n+9):nth-of-type(4n+1) {
-          padding-left: 0; }
-        .magic:nth-of-type(12n+9):nth-of-type(4n+4) {
-          padding-right: 0; } }
-  .magic:nth-of-type(12n+10) {
+  .magic:nth-of-type(11n+8) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
     padding: 10px 0;
     background-color: #bada55; }
-    @media only screen and (min-width: 480px) and (max-width: 980px) {
-      .magic:nth-of-type(12n+10) {
+    @media only screen and (min-width: 480px) {
+      .magic:nth-of-type(11n+8) {
         width: 50%;
         padding: 10px 2%; }
-        .magic:nth-of-type(12n+10):nth-of-type(2n+1) {
+        .magic:nth-of-type(11n+8):nth-of-type(11n+7) {
           padding-left: 0; }
-        .magic:nth-of-type(12n+10):nth-of-type(2n+2) {
+        .magic:nth-of-type(11n+8):nth-of-type(11n+8) {
           padding-right: 0; } }
-    @media only screen and (min-width: 980px) {
-      .magic:nth-of-type(12n+10) {
-        width: 25%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(12n+10):nth-of-type(4n+1) {
-          padding-left: 0; }
-        .magic:nth-of-type(12n+10):nth-of-type(4n+4) {
-          padding-right: 0; } }
-  .magic:nth-of-type(12n+11) {
+  .magic:nth-of-type(11n+9) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
     padding: 10px 0;
-    background-color: #bada55; }
-    @media only screen and (min-width: 480px) and (max-width: 980px) {
-      .magic:nth-of-type(12n+11) {
-        width: 50%;
+    background-color: #00c4ff; }
+    @media only screen and (min-width: 480px) {
+      .magic:nth-of-type(11n+9) {
+        width: 33.3333333333%;
         padding: 10px 2%; }
-        .magic:nth-of-type(12n+11):nth-of-type(2n+1) {
+        .magic:nth-of-type(11n+9):nth-of-type(11n+9) {
           padding-left: 0; }
-        .magic:nth-of-type(12n+11):nth-of-type(2n+2) {
+        .magic:nth-of-type(11n+9):nth-of-type(11n+11) {
           padding-right: 0; } }
-    @media only screen and (min-width: 980px) {
-      .magic:nth-of-type(12n+11) {
-        width: 25%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(12n+11):nth-of-type(4n+1) {
-          padding-left: 0; }
-        .magic:nth-of-type(12n+11):nth-of-type(4n+4) {
-          padding-right: 0; } }
-  .magic:nth-of-type(12n+12) {
+  .magic:nth-of-type(11n+10) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
     padding: 10px 0;
-    background-color: #bada55; }
-    @media only screen and (min-width: 480px) and (max-width: 980px) {
-      .magic:nth-of-type(12n+12) {
-        width: 50%;
+    background-color: #00c4ff; }
+    @media only screen and (min-width: 480px) {
+      .magic:nth-of-type(11n+10) {
+        width: 33.3333333333%;
         padding: 10px 2%; }
-        .magic:nth-of-type(12n+12):nth-of-type(2n+1) {
+        .magic:nth-of-type(11n+10):nth-of-type(11n+9) {
           padding-left: 0; }
-        .magic:nth-of-type(12n+12):nth-of-type(2n+2) {
+        .magic:nth-of-type(11n+10):nth-of-type(11n+11) {
           padding-right: 0; } }
-    @media only screen and (min-width: 980px) {
-      .magic:nth-of-type(12n+12) {
-        width: 25%;
+  .magic:nth-of-type(11n+11) {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -.275em;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #00c4ff; }
+    @media only screen and (min-width: 480px) {
+      .magic:nth-of-type(11n+11) {
+        width: 33.3333333333%;
         padding: 10px 2%; }
-        .magic:nth-of-type(12n+12):nth-of-type(4n+1) {
+        .magic:nth-of-type(11n+11):nth-of-type(11n+9) {
           padding-left: 0; }
-        .magic:nth-of-type(12n+12):nth-of-type(4n+4) {
+        .magic:nth-of-type(11n+11):nth-of-type(11n+11) {
           padding-right: 0; } }
 
 .row3:nth-of-type(3n+1) {

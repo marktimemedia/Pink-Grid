@@ -37,28 +37,31 @@ $defaultpad: 1%;
 * 	Sass Row Item Generator
 *	Built in conjunction with Pink Grid
 *
-*	$rowitems:		Number of items per row ( ex. 4 )											Defaults to 1
-*	$skipitems:		For alternating row layouts, # of items to skip in nth-of-type calc			Defaults to 0
+*	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+*	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+*	$after:			Alternating row layouts: elements after this row 		Defaults to 0
 *
 */
 
 
-@mixin pinkrow( $rowitems: 1, $skipitems: 0 ) {
+@mixin pinkrow( $rowitems: 1, $before: 0, $after: 0 ) {
 
-	$rowtotal: $rowitems + $skipitems;
+	$rowtotal: $rowitems + $before + $after;
+	$rowend: $rowitems + $before;
+	$bef1: $before + 1;	
 
 	@if $rowitems <=1 { // Prevent weird broken values
 		padding-left: 0;
 		padding-right: 0;
 	}
 
-	@else { //
+	@else { // all items
 
-		&:nth-of-type( #{$rowtotal}n+1 ){
+		&:nth-of-type( #{$rowtotal}n+#{$bef1} ){
 			padding-left:0;
 		}
 
-		&:nth-of-type( #{$rowtotal}n+#{$rowitems} ){
+		&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 			padding-right:0;
 		}
 
@@ -71,11 +74,12 @@ $defaultpad: 1%;
 * 	Complete responsive grid solution for equally sized items per row. 
 *	Includes a space to define your media query breakpoints (based on min-width)
 *
-*	$rowitems:		Number of items per row ( ex. 4 )													Defaults to 1
-*	$padside:		Padding to the left/right of each item 												Defaults to $magicside
-*	$padtop:		Padding above/below around each item. 												Defaults to $magictop
-* 	$align 			Vertical-align property 															Defaults to Top
-*	$altrow:		Create alternating row layouts (only for numbers evenly divisible into $rowitems)	Defaults to 0
+*	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+*	$padside:		Padding to the left/right of each item 					Defaults to $magicside
+*	$padtop:		Padding above/below around each item. 					Defaults to $magictop
+* 	$align 			Vertical-align property 								Defaults to Top
+*	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+*	$after:			Alternating row layouts: elements after this row 		Defaults to 0
 *
 */
 
@@ -91,10 +95,12 @@ $lg-bp:			980px;		// Set your large breakpoint
 $xl-bp:			1200px;		// Set your x-large breakpoint
 
 
-@mixin pinkmagic( $rowitems: $magicrow, $padtop: $magictop, $padside: $magicside, $align: $magicalign, $altrow: 0 ) {
+@mixin pinkmagic( $rowitems: $magicrow, $padtop: $magictop, $padside: $magicside, $align: $magicalign, $before: 0, $after: 0 ) {
 
 	$itemwidth: ( 100% / $rowitems ); 	// Width of items at maximum row size
-	$rowtotal: $rowitems + $altrow;				
+	$rowtotal: $rowitems + $before + $after;
+	$rowend: $rowitems + $before;
+	$bef1: $before + 1;			
 
 	@if $rowitems <= 3 { // 3 items or less per row
 
@@ -114,13 +120,13 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@else { //
+			@else { // all items
 
-				&:nth-of-type( #{$rowtotal}n+1 ){
+				&:nth-of-type( #{$rowtotal}n+#{$bef1} ){
 					padding-left:0;
 				}
 
-				&:nth-of-type( #{$rowtotal}n+#{$rowitems} ){
+				&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 					padding-right:0;
 				}
 
@@ -142,6 +148,8 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 
 			$thisrow: ceil($rowitems/2); // intermediate row value, rounded up to nearest whole number
 			$start2: $thisrow+1;
+			$befst2: $before + $start2;
+			$befrow: $before + $thisrow;	
 
 			width: 	( 100% / $thisrow );
 			padding:$magictop $magicside;
@@ -151,19 +159,19 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@if $altrow > 0 {
+			@if $before > 0 or $after > 0 {
 
-				&:nth-of-type( #{$rowtotal}n+1 ), &:nth-of-type( #{$rowtotal}n+#{$start2} ) {
+				&:nth-of-type( #{$rowtotal}n+#{$bef1} ), &:nth-of-type( #{$rowtotal}n+#{$befst2} ) {
 					padding-left:0;
 				}
 
-				&:nth-of-type( #{$rowtotal}n+#{$rowitems} ), &:nth-of-type( #{$rowtotal}n+#{$thisrow} ) {
+				&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$rowend} ) {
 					padding-right:0;
 				}
 
 			}
 
-			@else { //
+			@else { // no before or after value
 
 				&:nth-of-type( #{$thisrow}n+1 ){
 					padding-left:0;
@@ -187,13 +195,13 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@else { //
+			@else { // all items
 
-				&:nth-of-type( #{$rowtotal}n+1 ){
+				&:nth-of-type( #{$rowtotal}n+#{$bef1} ){
 					padding-left:0;
 				}
 
-				&:nth-of-type( #{$rowtotal}n+#{$rowitems} ){
+				&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 					padding-right:0;
 				}
 
@@ -214,6 +222,7 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
 
 			$thisrow: 	ceil($rowitems/4); // intermediate row value, rounded up to nearest whole number
+			$befrow: $before + $thisrow;
 
 			width: 	( 100% / $thisrow );
 			padding:$magictop $magicside;
@@ -223,13 +232,14 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@if $altrow > 0 {
+			@if $before > 0 or $after > 0 {
 
 				@for $i from 1 through 4 {
 
 					$start: $i * $thisrow + 1;
+					$befst: $before + $start;
 
-					&:nth-of-type( #{$rowtotal}n+1 ), &:nth-of-type( #{$rowtotal}n+#{$start} ) {
+					&:nth-of-type( #{$rowtotal}n+#{$bef1} ), &:nth-of-type( #{$rowtotal}n+#{$befst} ) {
 						padding-left:0;
 					}
 				}
@@ -237,14 +247,15 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				@for $j from 1 through 3 {
 
 					$end:	$j * $thisrow;
+					$befend: $before + $end;
 
-					&:nth-of-type( #{$rowtotal}n+#{$rowitems} ), &:nth-of-type( #{$rowtotal}n+#{$thisrow} ), &:nth-of-type( #{$rowtotal}n+#{$end} ){
+					&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$befend} ){
 						padding-right:0;
 					}
 				}
-			} // end altrow
+			} // end before
 
-			@else { // no altrow value
+			@else { // no before or after value
 
 				&:nth-of-type( #{$thisrow}n+1 ){
 					padding-left:0;
@@ -262,6 +273,8 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 
 			$thisrow: ceil($rowitems/2); // intermediate row value, rounded up to nearest whole number
 			$start2: $thisrow+1;
+			$befst2: $before + $start2;
+			$befrow: $before + $thisrow;
 
 			width: 	( 100% / $thisrow );
 			padding:$magictop $magicside;
@@ -271,19 +284,19 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@if $altrow > 0 {
+			@if $before > 0 or $after > 0 {
 
-				&:nth-of-type( #{$rowtotal}n+1 ), &:nth-of-type( #{$rowtotal}n+#{$start2} ) {
+				&:nth-of-type( #{$rowtotal}n+#{$bef1} ), &:nth-of-type( #{$rowtotal}n+#{$befst2} ) {
 					padding-left:0;
 				}
 
-				&:nth-of-type( #{$rowtotal}n+#{$rowitems} ), &:nth-of-type( #{$rowtotal}n+#{$thisrow} ) {
+				&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$rowend} ) {
 					padding-right:0;
 				}
 
 			}
 
-			@else { // no altrow value
+			@else { // no before or after value
 
 				&:nth-of-type( #{$thisrow}n+1 ){
 					padding-left:0;
@@ -307,13 +320,13 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@else { //
+			@else { // all items
 
-				&:nth-of-type( #{$rowtotal}n+1 ){
+				&:nth-of-type( #{$rowtotal}n+#{$bef1} ){
 					padding-left:0;
 				}
 
-				&:nth-of-type( #{$rowtotal}n+#{$rowitems} ){
+				&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 					padding-right:0;
 				}
 
@@ -334,6 +347,7 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
 
 			$thisrow: ceil($rowitems/6); // intermediate row value, rounded up to nearest whole number
+			$befrow: $before + $thisrow;
 
 			width: 	( 100% / $thisrow );
 			padding:$magictop $magicside;
@@ -343,13 +357,14 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@if $altrow > 0 {
+			@if $before > 0 or after > 0 {
 
 				@for $i from 1 through 6 {
 
 					$start: $i * $thisrow + 1;
+					$befst: $before + $start;
 
-					&:nth-of-type( #{$rowtotal}n+1 ), &:nth-of-type( #{$rowtotal}n+#{$start} ) {
+					&:nth-of-type( #{$rowtotal}n+#{$bef1} ), &:nth-of-type( #{$rowtotal}n+#{$befst} ) {
 						padding-left:0;
 					}
 				}
@@ -357,14 +372,15 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				@for $j from 1 through 5 {
 
 					$end:	$j * $thisrow;
+					$befend: $before + $end;
 
-					&:nth-of-type( #{$rowtotal}n+#{$rowitems} ), &:nth-of-type( #{$rowtotal}n+#{$thisrow} ), &:nth-of-type( #{$rowtotal}n+#{$end} ){
+					&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$befend} ){
 						padding-right:0;
 					}
 				}
-			} // end altrow
+			} // end before
 
-			@else { // no altrow value
+			@else { // no before or after value
 
 				&:nth-of-type( #{$thisrow}n+1 ){
 					padding-left:0;
@@ -381,6 +397,7 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 		@media only screen and ( min-width: $med-bp ) and ( max-width: $lg-bp ) {
 
 			$thisrow: ceil($rowitems/4); // intermediate row value, rounded up to nearest whole number
+			$befrow: $before + $thisrow;
 
 			width: 	( 100% / $thisrow );
 			padding:$magictop $magicside;
@@ -390,28 +407,30 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 			
-			@if $altrow > 0 {
+			@if $before > 0 or after > 0 {
 
 				@for $i from 1 through 4 {
 
 					$start: $i * $thisrow + 1;
+					$befst: $before + $start;
 
-					&:nth-of-type( #{$rowtotal}n+1 ), &:nth-of-type( #{$rowtotal}n+#{$start} ) {
+					&:nth-of-type( #{$rowtotal}n+#{$bef1} ), &:nth-of-type( #{$rowtotal}n+#{$befst} ) {
 						padding-left:0;
 					}
 				}
 
 				@for $j from 1 through 3 {
-
+					
 					$end:	$j * $thisrow;
+					$befend: $before + $end;
 
-					&:nth-of-type( #{$rowtotal}n+#{$rowitems} ), &:nth-of-type( #{$rowtotal}n+#{$thisrow} ), &:nth-of-type( #{$rowtotal}n+#{$end} ){
+					&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$befend} ){
 						padding-right:0;
 					}
 				}
-			} // end altrow
+			} // end before/after
 
-			@else { // no altrow value
+			@else { // no before or after value
 
 				&:nth-of-type( #{$thisrow}n+1 ){
 					padding-left:0;
@@ -421,31 +440,6 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 					padding-right:0;
 				}
 
-				@if $altrow > 0 { // alt row rules
-
-					$start: $rowitems+1;
-					$end: $rowitems+$thisalt;
-
-					&:nth-of-type( #{$rowtotal}n+#{$start} ){
-						padding:$magictop $magicside;
-						padding-left:0;
-					}
-
-					&:nth-of-type( #{$rowtotal}n+#{$end} ){
-						padding:$magictop $magicside;
-						padding-right:0;
-					}
-
-					@for $i from $start through $end {
-
-						&:nth-of-type( #{$rowtotal}n+#{$i} ){
-							width: (100% / $thisalt );
-						}
-
-					}
-
-				} // end alt row
-
 			}
 
 		} // end $med-bp
@@ -454,6 +448,8 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 
 			$thisrow: ceil($rowitems/2); // intermediate row value, rounded up to nearest whole number
 			$start2: $thisrow+1;
+			$befst2: $before + $start2;
+			$befrow: $before + $thisrow;
 
 			width: 	( 100% / $thisrow );
 			padding:$magictop $magicside;
@@ -463,19 +459,21 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@if $altrow > 0 {
+			@if $before > 0 or $after > 0 {
 
-				&:nth-of-type( #{$rowtotal}n+1 ), &:nth-of-type( #{$rowtotal}n+#{$start2} ) {
+				&:nth-of-type( #{$rowtotal}n+#{$bef1} ), &:nth-of-type( #{$rowtotal}n+#{$befst2} ) {
 					padding-left:0;
+					border-left:5px solid blue;
 				}
 
-				&:nth-of-type( #{$rowtotal}n+#{$rowitems} ), &:nth-of-type( #{$rowtotal}n+#{$thisrow} ) {
+				&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$rowend} ) {
 					padding-right:0;
+					border-right:5px solid blue;
 				}
 
 			}
 
-			@else { // no altrow value
+			@else { // no before or after value
 
 				&:nth-of-type( #{$thisrow}n+1 ){
 					padding-left:0;
@@ -499,13 +497,13 @@ $xl-bp:			1200px;		// Set your x-large breakpoint
 				padding-right: 0;
 			}
 
-			@else { //
+			@else { // all items
 
-				&:nth-of-type( #{$rowtotal}n+1 ){
+				&:nth-of-type( #{$rowtotal}n+#{$bef1} ){
 					padding-left:0;
 				}
 
-				&:nth-of-type( #{$rowtotal}n+#{$rowitems} ){
+				&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 					padding-right:0;
 				}
 

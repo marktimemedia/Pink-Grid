@@ -32,14 +32,15 @@ Use with media queries for even more responsive goodness!</p>
 <li>$padtop: Padding above/below around each item. - Defaults to 0</li>
 </ul>
 
-<p><code>@include pinkrow( $rowitems, $skipitems )</code></p>
+<p><code>@include pinkrow( $rowitems, $before, $after )</code></p>
 
 <ul>
 <li>$rowitems: Number of items per row ( ex. 4 ) - Defaults to 1</li>
-<li>$skipitems: Create alternating row layouts (only numbers evenly divisible into $rowitems) - Defaults to 0</li>
+<li>$before: Alternating row layouts: elements before this row - Defaults to 0</li>
+<li>$after: Alternating row layouts: elements after this row - Defaults to 0</li>
 </ul>
 
-<p><code>@include pinkmagic( $rowitems, $padtop, $padside, $align, $altrow )</code></p>
+<p><code>@include pinkmagic( $rowitems, $padtop, $padside, $align, $before, $after )</code></p>
 
 <ul>
 <li><p>$magicrow: 4; - Change this value to set the global default number of items per row</p></li>
@@ -55,7 +56,8 @@ Use with media queries for even more responsive goodness!</p>
 <li><p>$padside: If $autopad is false, it will use this value to manually add side padding. - Defaults to $defaultpad</p></li>
 <li><p>$padtop: Percentage padding above/below around each item. - Defaults to $magictop</p></li>
 <li><p>$align Vertical-align property - Defaults to Top</p></li>
-<li><p>$altrow: Create alternating row layouts (only numbers evenly divisible into $rowitems) - Defaults to 0</p></li>
+<li><p>$before: Alternating row layouts: elements before this row - Defaults to 0</p></li>
+<li><p>$after: Alternating row layouts: elements after this row - Defaults to 0</p></li>
 </ul>
 
 <p>For example: </p>

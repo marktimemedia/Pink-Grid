@@ -14,16 +14,25 @@
 
 	<div class="max">
 		<h2>Magic Row In Action (Fully Responsive)</h2>
+		<p>The magic not only changes the number of rows for each breakpoint, but removes the outer padding on the left and right of each row so that it can be flush with its container</p>
 		<p>I set a max-height on these items so you can easily see what the grid is doing. Here is the Scss for the grid:</p>
 		<pre>
 .magic {
-	@include pinkmagic( $rowitems: 8, $altrow: 4);
+	@include pinkmagic( $rowitems: 6, $after: 5 );
 
-	@for $i from 9 through 12 {
+	@for $i from 7 through 8 {
 
-		&:nth-of-type(12n+#{$i}) {
-			@include pinkmagic( $rowitems: 4);
+		&:nth-of-type( 11n+#{$i} ) {
+			@include pinkmagic( $rowitems: 2, $before: 6, $after: 3 );
 			background-color:#bada55;
+		} 
+	}
+
+	@for $i from 9 through 11 {
+
+		&:nth-of-type( 11n+#{$i} ) {
+			@include pinkmagic( $rowitems: 3, $before: 8 );
+			background-color:blue;
 		} 
 	}
 }
@@ -158,10 +167,21 @@
 				<img src="images/fixed4.png">
 			</div>
 		</div>
+		<div class="magic item3" id="item328">
+			<div class="inner-box">
+				<img src="images/gallery5.png">
+			</div>
+		</div>
+		<div class="magic item3" id="item329">
+			<div class="inner-box">
+				<img src="images/fixed6.png">
+			</div>
+		</div>
 	</div>
 
 	<div class="max">
 		<h2>Using Grids To Easily Create Awesome Layouts</h2>
+		<p>Using pinkgrid and pinkrow manually to create CSS layouts</p>
 		<div class="item" id="item1">
 			<div class="inner-box">
 				<img src="images/fixed8.png">
@@ -246,6 +266,7 @@
 
 	<div class="max">
 		<h2>More Random Examples</h2>
+		<p>Combining pinkgrid plus pinkrow lets you create any size grid items</p>
 		<div class="item2 row3" id="item21">
 			<div class="inner-box">
 				<img src="images/fixed8.png">

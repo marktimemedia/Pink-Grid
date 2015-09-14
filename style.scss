@@ -59,12 +59,12 @@ img {
 
 
 .item {
-	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5% );
-	@include pinkrow( $rowitems: 3, $skipitems: 1);
+	@include pinkgrid( $colspan: 4, $padside: 2%, $padtop: 5%, $align: middle );
+	@include pinkrow( $rowitems: 3, $after: 1);
 	
 	&:nth-of-type(4n+4) {
 		@include pinkgrid( $colspan: 12 );
-		@include pinkrow( $rowitems: 1 );
+		@include pinkrow( $rowitems: 1, $before: 3 );
 	}
 }
 
@@ -78,13 +78,22 @@ img {
 }
 
 .magic {
-	@include pinkmagic( $rowitems: 8, $altrow: 4);
+	@include pinkmagic( $rowitems: 6, $after: 5 );
 
-	@for $i from 9 through 12 {
+	@for $i from 7 through 8 {
 
-		&:nth-of-type(12n+#{$i}) {
-			@include pinkmagic( $rowitems: 4);
+		&:nth-of-type( 11n+#{$i} ) {
+			@include pinkmagic( $rowitems: 2, $before: 6, $after: 3 );
 			background-color:#bada55;
+		} 
+
+	}
+
+	@for $i from 9 through 11 {
+
+		&:nth-of-type( 11n+#{$i} ) {
+			@include pinkmagic( $rowitems: 3, $before: 8 );
+			background-color:#00c4ff;
 		} 
 
 	}

@@ -23,12 +23,14 @@ Don't want to write media queries? If you need evenly-sized items per row (like 
 * $padtop:		Padding above/below around each item. 							- Defaults to 0
 
 
-`@include pinkrow( $rowitems, $skipitems )`
+`@include pinkrow( $rowitems, $before, $after )`
 
 * $rowitems:	Number of items per row ( ex. 4 )					 							- Defaults to 1
-* $skipitems:	Create alternating row layouts (only numbers evenly divisible into $rowitems)	- Defaults to 0
+* $before:		Alternating row layouts: elements before this row 								- Defaults to 0
+* $after:		Alternating row layouts: elements after this row 								- Defaults to 0
 
-`@include pinkmagic( $rowitems, $padtop, $padside, $align, $altrow )`
+
+`@include pinkmagic( $rowitems, $padtop, $padside, $align, $before, $after )`
 
 * $magicrow: 	4; 			- Change this value to set the global default number of items per row
 * $magictop: 	10px;		- Change this value to set the global default of top padding
@@ -45,7 +47,8 @@ Don't want to write media queries? If you need evenly-sized items per row (like 
 * $padside:		If $autopad is false, it will use this value to manually add side padding. 		- Defaults to $defaultpad
 * $padtop:		Percentage padding above/below around each item. 								- Defaults to $magictop
 * $align 		Vertical-align property 														- Defaults to Top
-* $altrow:		Create alternating row layouts (only numbers evenly divisible into $rowitems)	- Defaults to 0
+* $before:		Alternating row layouts: elements before this row 								- Defaults to 0
+* $after:		Alternating row layouts: elements after this row 								- Defaults to 0
 
 
 For example: 
