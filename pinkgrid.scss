@@ -84,11 +84,11 @@ $magictop: 		10px !default;		// Global default of top padding
 $magicside:		2% !default;		// Global default of side padding
 $magicalign:	top !default;		// Global default of vertical-align
 
-$tiny-bp: 		300px !default;		// Set your tiny breakpoint
-$sm-bp:			480px !default;		// Set your small breakpoint
-$med-bp:		720px !default;		// Set your medium breakpoint
-$lg-bp:			980px !default;		// Set your large breakpoint
-$xl-bp:			1200px !default;	// Set your x-large breakpoint
+$tiny-bp: 		19em !default;		// Set your tiny breakpoint
+$sm-bp:			30em !default;		// Set your small breakpoint
+$med-bp:		45em !default;		// Set your medium breakpoint
+$lg-bp:			61em !default;		// Set your large breakpoint
+$xl-bp:			75em !default;		// Set your x-large breakpoint
 
 
 @mixin pinkmagic( $rowitems: $magicrow, $padtop: $magictop, $padside: $magicside, $align: $magicalign, $before: 0, $after: 0 ) {
