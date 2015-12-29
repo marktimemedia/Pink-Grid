@@ -66,6 +66,48 @@ $defaultpad: 1% !default;
 
 }
 
+// PINK GRID ROW
+// Generate evenly sized and evenly spaced row items
+// Like Magic Grid but without the automatic media queries
+//
+//	$align:			Vertical-align property 								Defaults to Top
+//	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+//	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+//	$after:			Alternating row layouts: elements after this row 		Defaults to 0
+//	$padside:		Percentage padding left/right of each item.				Defaults to $defaultpad
+//	$padtop:		Percentage padding above/below around each item. 		Defaults to 0
+
+
+@mixin pinkgridrow( $align: top, $padtop: 0, $padside: $defaultpad, $rowitems: 1, $before: 0, $after: 0 ) {
+
+	$itemwidth: ( 100% / $rowitems );
+	$rowtotal: $rowitems + $before + $after;
+	$rowend: $rowitems + $before;	
+
+	display:		inline-block;
+	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	vertical-align: $align;
+	width: 			$itemwidth;
+	padding: 		$padtop 0;
+
+	@if $rowitems <=1 { // Prevent weird broken values
+		width:100%;
+	}
+
+	@else { // all items
+
+		padding-right: $padside;
+		width: ( ( 100% + $padside ) / $rowitems );
+
+		&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
+			padding-right:0;
+			width: ( ( ( 100% + $padside ) / $rowitems ) - $padside );
+		}
+
+	}
+
+}
+
 
 // 	PINK MAGIC ROW
 // 	Complete responsive grid solution for equally sized items per row. 
