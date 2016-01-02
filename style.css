@@ -82,98 +82,91 @@ img {
   vertical-align: top;
   margin-right: -.275em;
   width: 100%;
-  padding: 10px 0; }
+  padding: 1em 0; }
   @media only screen and (min-width: 30em) and (max-width: 61em) {
     .magic {
-      width: 33.3333333333%;
-      padding: 10px 2%; }
-      .magic:nth-of-type(11n+1), .magic:nth-of-type(11n+4) {
-        padding-left: 0; }
+      width: 34%;
+      padding-right: 2%; }
       .magic:nth-of-type(11n+3), .magic:nth-of-type(11n+6) {
-        padding-right: 0; } }
+        padding-right: 0;
+        width: 32%; } }
   @media only screen and (min-width: 61em) {
     .magic {
-      width: 16.6666666667%;
-      padding: 10px 2%; }
-      .magic:nth-of-type(11n+1) {
-        padding-left: 0; }
+      width: 17%;
+      padding-right: 2%; }
       .magic:nth-of-type(11n+6) {
-        padding-right: 0; } }
+        padding-right: 0;
+        width: 15%; } }
   .magic:nth-of-type(11n+7) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
-    padding: 10px 0;
+    padding: 1em 0;
     background-color: #bada55; }
     @media only screen and (min-width: 30em) {
       .magic:nth-of-type(11n+7) {
-        width: 50%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(11n+7):nth-of-type(11n+7) {
-          padding-left: 0; }
+        width: 51%;
+        padding-right: 2%; }
         .magic:nth-of-type(11n+7):nth-of-type(11n+8) {
-          padding-right: 0; } }
+          padding-right: 0;
+          width: 49%; } }
   .magic:nth-of-type(11n+8) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
-    padding: 10px 0;
+    padding: 1em 0;
     background-color: #bada55; }
     @media only screen and (min-width: 30em) {
       .magic:nth-of-type(11n+8) {
-        width: 50%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(11n+8):nth-of-type(11n+7) {
-          padding-left: 0; }
+        width: 51%;
+        padding-right: 2%; }
         .magic:nth-of-type(11n+8):nth-of-type(11n+8) {
-          padding-right: 0; } }
+          padding-right: 0;
+          width: 49%; } }
   .magic:nth-of-type(11n+9) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
-    padding: 10px 0;
+    padding: 1em 0;
     background-color: #00c4ff; }
     @media only screen and (min-width: 30em) {
       .magic:nth-of-type(11n+9) {
-        width: 33.3333333333%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(11n+9):nth-of-type(11n+9) {
-          padding-left: 0; }
+        width: 34%;
+        padding-right: 2%; }
         .magic:nth-of-type(11n+9):nth-of-type(11n+11) {
-          padding-right: 0; } }
+          padding-right: 0;
+          width: 32%; } }
   .magic:nth-of-type(11n+10) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
-    padding: 10px 0;
+    padding: 1em 0;
     background-color: #00c4ff; }
     @media only screen and (min-width: 30em) {
       .magic:nth-of-type(11n+10) {
-        width: 33.3333333333%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(11n+10):nth-of-type(11n+9) {
-          padding-left: 0; }
+        width: 34%;
+        padding-right: 2%; }
         .magic:nth-of-type(11n+10):nth-of-type(11n+11) {
-          padding-right: 0; } }
+          padding-right: 0;
+          width: 32%; } }
   .magic:nth-of-type(11n+11) {
     display: inline-block;
     vertical-align: top;
     margin-right: -.275em;
     width: 100%;
-    padding: 10px 0;
+    padding: 1em 0;
     background-color: #00c4ff; }
     @media only screen and (min-width: 30em) {
       .magic:nth-of-type(11n+11) {
-        width: 33.3333333333%;
-        padding: 10px 2%; }
-        .magic:nth-of-type(11n+11):nth-of-type(11n+9) {
-          padding-left: 0; }
+        width: 34%;
+        padding-right: 2%; }
         .magic:nth-of-type(11n+11):nth-of-type(11n+11) {
-          padding-right: 0; } }
+          padding-right: 0;
+          width: 32%; } }
 
 .row3:nth-of-type(3n+1) {
   padding-left: 0; }

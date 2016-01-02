@@ -14,11 +14,14 @@
 Or, use Magic Grid to create a fully responsive equal-sized grid instantly!
 No more dealing with annoying floats, rows, and clears! Using the magic of display: inline-block</p>
 
-<p>Use <code>@include pinkgrid</code> to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
-Use<code>@include pinkrow</code> to remove the outer padding.
+<p>Use <code>@include pinkgrid()</code> to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
+Use<code>@include pinkrow()</code> to adjust the width and outer padding of the outer elements.
+Use <code>@include pinkgridrow()</code> to create rows where all items should be the same width.
 Use with media queries for even more responsive goodness!</p>
 
 <p>Don&#8217;t want to write media queries? If you need evenly-sized items per row (like a photo gallery or content blocks) just use <code>@include pinkmagic</code> and don&#8217;t even worry about it, because I did all the math for you! Works for any number items per row :)</p>
+
+<p>Use of <code>@pinkgrid()</code> plus <code>@pinkrow()</code> is best with items that will not span equal columns (5+7, 3+6+3, etc) because the container widths stay the same even when the outer padding on each row is removed. For equally sized items (like in a photo grid), use <code>@pinkgridrow()</code> which adjusts the width of the outer containers to keep the content areas all the same width.</p>
 
 <p><code>@include pinkgrid( $align, $totalcols, $colspan, $padtop, $padside )</code></p>
 
@@ -38,6 +41,17 @@ Use with media queries for even more responsive goodness!</p>
 <li>$rowitems: Number of items per row ( ex. 4 ) - Defaults to 1</li>
 <li>$before: Alternating row layouts: elements before this row - Defaults to 0</li>
 <li>$after: Alternating row layouts: elements after this row - Defaults to 0</li>
+</ul>
+
+<p><code>pinkgridrow( $align, $padtop, $padside, $rowitems, $before, $after )</code></p>
+
+<ul>
+<li>$align: Vertical-align property - Defaults to Top</li>
+<li>$rowitems: Number of items per row ( ex. 4 ) - Defaults to 1</li>
+<li>$before: Alternating row layouts: elements before this row - Defaults to 0</li>
+<li>$after: Alternating row layouts: elements after this row - Defaults to 0</li>
+<li>$padside: Percentage padding left/right of each item. - Defaults to $defaultpad</li>
+<li>$padtop: Percentage padding above/below around each item. - Defaults to 0</li>
 </ul>
 
 <p><code>@include pinkmagic( $rowitems, $padtop, $padside, $align, $before, $after )</code></p>
@@ -66,7 +80,9 @@ Use with media queries for even more responsive goodness!</p>
 
 <p><code>@include pinkgrid( $totalcols: 6, $colspan: 3 )</code> will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding</p>
 
-<p><code>@include pinkgrid( $colspan: 3 ) @include pinkrow( $rowitems: 4 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will remove the outside padding of the first and last item in each row, based on having 4 items per row</p>
+<p><code>@include pinkgrid( $colspan: 3 ) @include pinkrow( $rowitems: 4 )</code> will generate an object that spans 3 out of 12 columns ( 25% ) but will remove the outside padding of the first and last item in each row of 4 items</p>
+
+<p><code>@include pinkgridrow( $rowitems: 4 )</code> will generate a grid with 4 items per row for all items with that class, with the content area inside the containers spanning an equal width for each item.</p>
 
 <p><code>@include pinkmagic( $rowitems: 8 )</code> will generate a fully responsive grid for all items with that class, with 8 items across, complete with breakpoints</p>
 

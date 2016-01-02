@@ -6,11 +6,14 @@ Inclue this file to easily generate widths/padding for items and build items whi
 Or, use Magic Grid to create a fully responsive equal-sized grid instantly!
 No more dealing with annoying floats, rows, and clears! Using the magic of display: inline-block
 
-Use `@include pinkgrid` to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
-Use`@include pinkrow` to remove the outer padding.
+Use `@include pinkgrid()` to generate widths and padding for your own class-based grid system ( 1col, 2col, full, etc. ) or simply add directly to items.
+Use`@include pinkrow()` to adjust the width and outer padding of the outer elements.
+Use `@include pinkgridrow()` to create rows where all items should be the same width.
 Use with media queries for even more responsive goodness!
 
 Don't want to write media queries? If you need evenly-sized items per row (like a photo gallery or content blocks) just use `@include pinkmagic` and don't even worry about it, because I did all the math for you! Works for any number items per row :)
+
+Use of `@pinkgrid()` plus `@pinkrow()` is best with items that will not span equal columns (5+7, 3+6+3, etc) because the container widths stay the same even when the outer padding on each row is removed. For equally sized items (like in a photo grid), use `@pinkgridrow()` which adjusts the width of the outer containers to keep the content areas all the same width.
 
 `@include pinkgrid( $align, $totalcols, $colspan, $padtop, $padside )`
 
@@ -28,6 +31,16 @@ Don't want to write media queries? If you need evenly-sized items per row (like 
 * $rowitems:	Number of items per row ( ex. 4 )					 							- Defaults to 1
 * $before:		Alternating row layouts: elements before this row 								- Defaults to 0
 * $after:		Alternating row layouts: elements after this row 								- Defaults to 0
+
+
+`pinkgridrow( $align, $padtop, $padside, $rowitems, $before, $after )`
+
+* $align:		Vertical-align property 								- Defaults to Top
+* $rowitems:	Number of items per row ( ex. 4 )						- Defaults to 1
+* $before:		Alternating row layouts: elements before this row 		- Defaults to 0
+* $after:		Alternating row layouts: elements after this row 		- Defaults to 0
+* $padside:		Percentage padding left/right of each item.				- Defaults to $defaultpad
+* $padtop:		Percentage padding above/below around each item. 		- Defaults to 0
 
 
 `@include pinkmagic( $rowitems, $padtop, $padside, $align, $before, $after )`
@@ -57,7 +70,9 @@ For example:
 
 `@include pinkgrid( $totalcols: 6, $colspan: 3 )` will generate an object that spans 3 out of 6 ( 50% ) columns with 1% padding
 
-`@include pinkgrid( $colspan: 3 ) @include pinkrow( $rowitems: 4 )` will generate an object that spans 3 out of 12 columns ( 25% ) but will remove the outside padding of the first and last item in each row, based on having 4 items per row
+`@include pinkgrid( $colspan: 3 ) @include pinkrow( $rowitems: 4 )` will generate an object that spans 3 out of 12 columns ( 25% ) but will remove the outside padding of the first and last item in each row of 4 items
+
+`@include pinkgridrow( $rowitems: 4 )` will generate a grid with 4 items per row for all items with that class, with the content area inside the containers spanning an equal width for each item.
 
 `@include pinkmagic( $rowitems: 8 )` will generate a fully responsive grid for all items with that class, with 8 items across, complete with breakpoints
 
