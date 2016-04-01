@@ -144,14 +144,14 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 	vertical-align:	$align;
 	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 	width:			100%;
-	padding:		$magictop 0;	
+	padding:		$padtop 0;	
 
 	@if $rowitems <= 3 { // 3 items or less per row
 
 		@media only screen and ( min-width: $sm-bp ) {
 
 			width: ( ( 100% + $padside ) / $rowitems );
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $rowitems <=1 { // Prevent weird broken values
 				width:100%;
@@ -179,7 +179,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 			$befrow: $before + $thisrow;	
 
 			width: $itemwidth2;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $thisrow <=1 { // Prevent weird broken values
 				width:100%;
@@ -209,7 +209,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 		@media only screen and ( min-width: $lg-bp ) {
 
 			width: $itemwidth;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $rowitems <=1 { // Prevent weird broken values
 				width:100%;
@@ -238,7 +238,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 			$befrow: $before + $thisrow;
 
 			width: $itemwidth2;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $thisrow <=1 { // Prevent weird broken values
 				width:100%;
@@ -277,7 +277,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 			$befrow: $before + $thisrow;
 
 			width: $itemwidth2;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $rowitems <=1 { // Prevent weird broken values
 				width:100%;
@@ -306,7 +306,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 		@media only screen and ( min-width: $lg-bp ) {
 
 			width: 	$itemwidth;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $rowitems <=1 { // Prevent weird broken values
 				width:100%;
@@ -335,7 +335,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 			$befrow: $before + $thisrow;
 
 			width: $itemwidth2;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $thisrow <=1 { // Prevent weird broken values
 				width:100%;
@@ -374,7 +374,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 			$befrow: $before + $thisrow;
 
 			width: $itemwidth2;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $rowitems <=1 { // Prevent weird broken values
 				width:100%;
@@ -413,7 +413,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 			$befrow: $before + $thisrow;
 
 			width: $itemwidth2;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $rowitems <=1 { // Prevent weird broken values
 				width:100%;
@@ -442,7 +442,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 		@media only screen and ( min-width: $xl-bp ) {
 
 			width: $itemwidth;
-			padding-right: $magicside;
+			padding-right: $padside;
 
 			@if $rowitems <=1 { // Prevent weird broken values
 				width:100%;
