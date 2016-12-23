@@ -49,7 +49,7 @@ img {
 
 .item {
   display: inline-block;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   vertical-align: middle;
   width: 33.3333333333%;
   padding: 5% 2%; }
@@ -59,16 +59,16 @@ img {
     padding-right: 0; }
   .item:nth-of-type(4n+4) {
     display: inline-block;
-    margin-right: -.275em;
+    margin-right: -0.275em;
     vertical-align: top;
     width: 100%;
-    padding: 0 1%;
+    padding: 0 2%;
     padding-left: 0;
     padding-right: 0; }
 
 .item2 {
   display: inline-block;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   vertical-align: top;
   width: 33.3333333333%;
   padding: 5% 2%; }
@@ -80,10 +80,10 @@ img {
 .magic {
   display: inline-block;
   vertical-align: top;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   width: 100%;
   padding: 1em 0; }
-  @media only screen and (min-width: 30em) and (max-width: 61em) {
+  @media only screen and (min-width: 32em) and (max-width: 61em) {
     .magic {
       width: 34%;
       padding-right: 2%; }
@@ -100,11 +100,11 @@ img {
   .magic:nth-of-type(11n+7) {
     display: inline-block;
     vertical-align: top;
-    margin-right: -.275em;
+    margin-right: -0.275em;
     width: 100%;
     padding: 1em 0;
     background-color: #bada55; }
-    @media only screen and (min-width: 30em) {
+    @media only screen and (min-width: 32em) {
       .magic:nth-of-type(11n+7) {
         width: 51%;
         padding-right: 2%; }
@@ -114,11 +114,11 @@ img {
   .magic:nth-of-type(11n+8) {
     display: inline-block;
     vertical-align: top;
-    margin-right: -.275em;
+    margin-right: -0.275em;
     width: 100%;
     padding: 1em 0;
     background-color: #bada55; }
-    @media only screen and (min-width: 30em) {
+    @media only screen and (min-width: 32em) {
       .magic:nth-of-type(11n+8) {
         width: 51%;
         padding-right: 2%; }
@@ -128,11 +128,18 @@ img {
   .magic:nth-of-type(11n+9) {
     display: inline-block;
     vertical-align: top;
-    margin-right: -.275em;
+    margin-right: -0.275em;
     width: 100%;
     padding: 1em 0;
     background-color: #00c4ff; }
-    @media only screen and (min-width: 30em) {
+    @media only screen and (min-width: 32em) and (max-width: 45em) {
+      .magic:nth-of-type(11n+9) {
+        width: 51%;
+        padding-right: 2%; }
+        .magic:nth-of-type(11n+9):nth-of-type(11n+10), .magic:nth-of-type(11n+9):nth-of-type(11n+11) {
+          padding-right: 0;
+          width: 49%; } }
+    @media only screen and (min-width: 45em) {
       .magic:nth-of-type(11n+9) {
         width: 34%;
         padding-right: 2%; }
@@ -142,11 +149,18 @@ img {
   .magic:nth-of-type(11n+10) {
     display: inline-block;
     vertical-align: top;
-    margin-right: -.275em;
+    margin-right: -0.275em;
     width: 100%;
     padding: 1em 0;
     background-color: #00c4ff; }
-    @media only screen and (min-width: 30em) {
+    @media only screen and (min-width: 32em) and (max-width: 45em) {
+      .magic:nth-of-type(11n+10) {
+        width: 51%;
+        padding-right: 2%; }
+        .magic:nth-of-type(11n+10):nth-of-type(11n+10), .magic:nth-of-type(11n+10):nth-of-type(11n+11) {
+          padding-right: 0;
+          width: 49%; } }
+    @media only screen and (min-width: 45em) {
       .magic:nth-of-type(11n+10) {
         width: 34%;
         padding-right: 2%; }
@@ -156,11 +170,18 @@ img {
   .magic:nth-of-type(11n+11) {
     display: inline-block;
     vertical-align: top;
-    margin-right: -.275em;
+    margin-right: -0.275em;
     width: 100%;
     padding: 1em 0;
     background-color: #00c4ff; }
-    @media only screen and (min-width: 30em) {
+    @media only screen and (min-width: 32em) and (max-width: 45em) {
+      .magic:nth-of-type(11n+11) {
+        width: 51%;
+        padding-right: 2%; }
+        .magic:nth-of-type(11n+11):nth-of-type(11n+10), .magic:nth-of-type(11n+11):nth-of-type(11n+11) {
+          padding-right: 0;
+          width: 49%; } }
+    @media only screen and (min-width: 45em) {
       .magic:nth-of-type(11n+11) {
         width: 34%;
         padding-right: 2%; }
@@ -175,38 +196,38 @@ img {
 
 #item21 {
   display: inline-block;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   vertical-align: top;
   width: 16.6666666667%;
-  padding: 0 1%; }
+  padding: 0 2%; }
 
 #item22 {
   display: inline-block;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   vertical-align: top;
   width: 66.6666666667%;
-  padding: 0 1%; }
+  padding: 0 2%; }
 
 #item23 {
   display: inline-block;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   vertical-align: top;
   width: 16.6666666667%;
-  padding: 0 1%; }
+  padding: 0 2%; }
 
 #item24 {
   display: inline-block;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   vertical-align: top;
   width: 166.6666666667%;
-  padding: 15px 1%;
+  padding: 15px 2%;
   width: 100%;
   padding-left: 0;
   padding-right: 0; }
 
 #item25, #item26, #item27, #item28 {
   display: inline-block;
-  margin-right: -.275em;
+  margin-right: -0.275em;
   vertical-align: bottom;
   width: 25%;
   padding: 10px 2%; }

@@ -13,14 +13,15 @@
 
 
 $defaultcols: 12 !default; 
-$defaultpad: 1% !default;
+$defaultpad: 2% !default;
+$defaultmargin: -.275em !default; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 
 @mixin pinkgrid( $align: top, $totalcols: $defaultcols, $colspan: $defaultcols, $padtop: 0, $padside: $defaultpad ) {
 
 	$itemwidth: ( 100% / $totalcols * $colspan );
 
 	display:		inline-block;
-	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	margin-right: 	$defaultmargin; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 	vertical-align: $align;
 	width: 			$itemwidth;
 	padding: 		$padtop $padside;
@@ -61,9 +62,7 @@ $defaultpad: 1% !default;
 		&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 			padding-right:0;
 		}
-
 	}
-
 }
 
 // PINK GRID ROW
@@ -86,7 +85,7 @@ $defaultpad: 1% !default;
 	$rowend: $rowitems + $before;	
 
 	display:		inline-block;
-	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	margin-right: 	$defaultmargin; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 	vertical-align: $align;
 	padding: 		$padtop 0;
 
@@ -103,9 +102,7 @@ $defaultpad: 1% !default;
 			padding-right:0;
 			width: $lastwidth;
 		}
-
 	}
-
 }
 
 
@@ -127,7 +124,7 @@ $magicside:		2% !default;		// Global default of side padding, in percentage
 $magicalign:	top !default;		// Global default of vertical-align
 
 $tiny-bp: 		19em !default;		// Set your tiny breakpoint
-$sm-bp:			30em !default;		// Set your small breakpoint
+$sm-bp:			32em !default;		// Set your small breakpoint
 $med-bp:		45em !default;		// Set your medium breakpoint
 $lg-bp:			61em !default;		// Set your large breakpoint
 $xl-bp:			75em !default;		// Set your x-large breakpoint
@@ -142,11 +139,11 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 
 	display:		inline-block;
 	vertical-align:	$align;
-	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	margin-right: 	$defaultmargin; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 	width:			100%;
 	padding:		$padtop 0;	
 
-	@if $rowitems <= 3 { // 3 items or less per row
+	@if $rowitems < 3 { // Less than 3 items per row
 
 		@media only screen and ( min-width: $sm-bp ) {
 
@@ -164,10 +161,60 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					width: $lastwidth;
 				}
 			}
+		} // end $sm-bp
+	} // end 3 items or less per row
 
+	@else if $rowitems == 3 { // 3 items per row
+
+		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
+
+			$thisrow: 2; // intermediate row value, rounded up to nearest whole number
+			$itemwidth2: ( ( 100%  + $padside ) / $thisrow );
+			$lastwidth2: ( $itemwidth2 - $padside ); 	
+			$befrow: $before + $thisrow;	
+
+			width: $itemwidth2;
+			padding-right: $padside;
+
+			@if $thisrow <=1 { // Prevent weird broken values
+				width:100%;
+			}
+
+			@if $before > 0 or $after > 0 {
+
+				&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$rowend} ) {
+					padding-right:0;
+					width: $lastwidth2;
+				}
+			}
+
+			@else { // no before or after value
+
+				&:nth-of-type( #{$thisrow}n+#{$thisrow} ){
+					padding-right:0;
+					width: $lastwidth2;
+				}
+			}
 		} // end $sm-bp
 
-	} // end 3 items or less per row
+		@media only screen and ( min-width: $med-bp ) {
+
+			width: ( ( 100% + $padside ) / $rowitems );
+			padding-right: $padside;
+
+			@if $rowitems <=1 { // Prevent weird broken values
+				width:100%;
+			}
+
+			@else { // all items
+
+				&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
+					padding-right:0;
+					width: $lastwidth;
+				}
+			}
+		} // end $med-bp
+	} // end 3 items per row
 
 	@else if $rowitems > 3 and $rowitems <= 6 { // 4 to 6 items per row
 
@@ -191,19 +238,15 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
 
 			@else { // no before or after value
-
 
 				&:nth-of-type( #{$thisrow}n+#{$thisrow} ){
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
-
 		} // end $sm-bp
 
 		@media only screen and ( min-width: $lg-bp ) {
@@ -221,11 +264,8 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth;
 				}
-
 			}
-
 		} // end $lg-bp
-
 	} // end 4 to 6 items per row
 
 	@else if $rowitems > 6 and $rowitems <= 9 { // 7 to 9 items per row
@@ -264,9 +304,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
-
 		} // end $sm-bp
 
 		@media only screen and ( min-width: $med-bp ) and ( max-width: $lg-bp ) {
@@ -289,7 +327,6 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
 
 			@else { // no before or after value
@@ -298,9 +335,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
-
 		} // end $med-bp
 
 		@media only screen and ( min-width: $lg-bp ) {
@@ -318,11 +353,8 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth;
 				}
-
 			}
-
 		} // end $lg-bp
-
 	} // end 7 to 10 items per row
 
 	@else if $rowitems > 9 { // 10+ items per row
@@ -341,7 +373,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 				width:100%;
 			}
 
-			@if $before > 0 or after > 0 {
+			@if $before > 0 or $after > 0 {
 
 				@for $j from 1 through 5 {
 
@@ -361,9 +393,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
-
 		} // end $sm-bp
 
 		@media only screen and ( min-width: $med-bp ) and ( max-width: $lg-bp ) {
@@ -380,7 +410,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 				width:100%;
 			}
 			
-			@if $before > 0 or after > 0 {
+			@if $before > 0 or $after > 0 {
 
 				@for $j from 1 through 3 {
 					
@@ -400,9 +430,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
-
 		} // end $med-bp
 
 		@media only screen and ( min-width: $lg-bp ) and ( max-width: $xl-bp ) {
@@ -425,7 +453,6 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
 
 			@else { // no before or after value
@@ -434,9 +461,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
-
 			}
-
 		} // end $lg-bp
 
 		@media only screen and ( min-width: $xl-bp ) {
@@ -453,11 +478,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 				&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 					padding-right:0;
 				}
-
 			}
-
 		} // end $xl-bp
-
 	} // end 10+ items per row
-
 }
