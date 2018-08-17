@@ -2,27 +2,25 @@
 	box-sizing: border-box; // All Pink Mixins need this in order to work :)
 }
 
-/** 
-*	PINK GRID
-*	Sass Width Percentage Generator
-*
-*	$align:			Vertical-align property 											Defaults to Top
-* 	$totalcols: 	Number of columns in your grid ( ex: 12 ) 							Defaults to $defaultcols
-*	$colspan: 		Number of columns your item spans ( ex: 3 / 12 ) 					Defaults to $defaultcols (100% width)
-*	$padside:		Percentage padding left/right of each item.							Defaults to $defaultpad
-*	$padtop:		Percentage padding above/below around each item. 					Defaults to 0
-*/
+// 	PINK GRID
+// 	Sass Width Percentage Generator
+//
+//	$align:			Vertical-align property 											Defaults to Top
+// 	$totalcols: 	Number of columns in your grid ( ex: 12 ) 							Defaults to $defaultcols
+//	$colspan: 		Number of columns your item spans ( ex: 3 / 12 ) 					Defaults to $defaultcols (100% width)
+//	$padside:		Percentage padding left/right of each item.							Defaults to $defaultpad
+//	$padtop:		Percentage padding above/below around each item. 					Defaults to 0
+
 
 $defaultcols: 12 !default; 
-$defaultpad: 2% !default;
-$defaultmargin: -.275em !default; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+$defaultpad: 1% !default;
 
-@mixin pinkgrid( $align: top, $totalcols: $defaultcols, $colspan: $defaultcols, $padtop: 0, $padside: $defaultpad, $margin: $defaultmargin ) {
+@mixin pinkgrid( $align: top, $totalcols: $defaultcols, $colspan: $defaultcols, $padtop: 0, $padside: $defaultpad ) {
 
 	$itemwidth: ( 100% / $totalcols * $colspan );
 
 	display:		inline-block;
-	margin-right: 	$margin; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 	vertical-align: $align;
 	width: 			$itemwidth;
 	padding: 		$padtop $padside;
@@ -34,15 +32,14 @@ $defaultmargin: -.275em !default; // Cancels out margin px issue with display:in
 		
 }
 
-/**
-*	PINK ROW
-*	Sass Row Item Generator
-*	Built in conjunction with Pink Grid
-*
-*	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
-*	$before:		Alternating row layouts: elements before this row 		Defaults to 0
-*	$after:			Alternating row layouts: elements after this row 		Defaults to 0
-*/
+// 	PINK ROW
+// 	Sass Row Item Generator
+//	Built in conjunction with Pink Grid
+//
+//	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+//	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+//	$after:			Alternating row layouts: elements after this row 		Defaults to 0
+
 
 @mixin pinkrow( $rowitems: 1, $before: 0, $after: 0 ) {
 
@@ -64,23 +61,24 @@ $defaultmargin: -.275em !default; // Cancels out margin px issue with display:in
 		&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 			padding-right:0;
 		}
+
 	}
+
 }
 
-/**
-*	PINK GRID ROW
-*	Generate evenly sized and evenly spaced row items
-*	Like Magic Grid but without the automatic media queries
-*
-*	$align:			Vertical-align property 								Defaults to Top
-*	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
-*	$before:		Alternating row layouts: elements before this row 		Defaults to 0
-*	$after:			Alternating row layouts: elements after this row 		Defaults to 0
-*	$padside:		Percentage padding left/right of each item.				Defaults to $defaultpad
-*	$padtop:		Percentage padding above/below around each item. 		Defaults to 0
-*/
+// PINK GRID ROW
+// Generate evenly sized and evenly spaced row items
+// Like Magic Grid but without the automatic media queries
+//
+//	$align:			Vertical-align property 								Defaults to Top
+//	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+//	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+//	$after:			Alternating row layouts: elements after this row 		Defaults to 0
+//	$padside:		Percentage padding left/right of each item.				Defaults to $defaultpad
+//	$padtop:		Percentage padding above/below around each item. 		Defaults to 0
 
-@mixin pinkgridrow( $align: top, $padtop: 0, $padside: $defaultpad, $rowitems: 1, $before: 0, $after: 0, $margin: $defaultmargin ) {
+
+@mixin pinkgridrow( $align: top, $padtop: 0, $padside: $defaultpad, $rowitems: 1, $before: 0, $after: 0 ) {
 
 	$itemwidth: ( ( 100% + $padside ) / $rowitems );
 	$lastwidth: ( $itemwidth - $padside );
@@ -88,7 +86,7 @@ $defaultmargin: -.275em !default; // Cancels out margin px issue with display:in
 	$rowend: $rowitems + $before;	
 
 	display:		inline-block;
-	margin-right: 	$margin; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 	vertical-align: $align;
 	padding: 		$padtop 0;
 
@@ -105,36 +103,37 @@ $defaultmargin: -.275em !default; // Cancels out margin px issue with display:in
 			padding-right:0;
 			width: $lastwidth;
 		}
+
 	}
+
 }
 
 
-/**
-* 	PINK MAGIC ROW
-* 	Complete responsive grid solution for equally sized items per row. 
-*	Includes a space to define your media query breakpoints (based on min-width)
-*
-*	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
-*	$padside:		Padding to the left/right of each item 					Defaults to $magicside
-*	$padtop:		Padding above/below around each item. 					Defaults to $magictop
-* 	$align 			Vertical-align property 								Defaults to Top
-*	$before:		Alternating row layouts: elements before this row 		Defaults to 0
-*	$after:			Alternating row layouts: elements after this row 		Defaults to 0
-*/
+// 	PINK MAGIC ROW
+// 	Complete responsive grid solution for equally sized items per row. 
+//	Includes a space to define your media query breakpoints (based on min-width)
+//
+//	$rowitems:		Number of items per row ( ex. 4 )						Defaults to 1
+//	$padside:		Padding to the left/right of each item 					Defaults to $magicside
+//	$padtop:		Padding above/below around each item. 					Defaults to $magictop
+// 	$align 			Vertical-align property 								Defaults to Top
+//	$before:		Alternating row layouts: elements before this row 		Defaults to 0
+//	$after:			Alternating row layouts: elements after this row 		Defaults to 0
+
 
 $magicrow: 		4 !default; 		// Global default number of items per row
 $magictop: 		1em !default;		// Global default of top padding
-$magicside:		2% !default;		// Global default of side padding, in percentage
+$magicside:		3% !default;		// Global default of side padding, in percentage
 $magicalign:	top !default;		// Global default of vertical-align
 
 $tiny-bp: 		19em !default;		// Set your tiny breakpoint
-$sm-bp:			32em !default;		// Set your small breakpoint
+$sm-bp:			30em !default;		// Set your small breakpoint
 $med-bp:		45em !default;		// Set your medium breakpoint
 $lg-bp:			61em !default;		// Set your large breakpoint
 $xl-bp:			75em !default;		// Set your x-large breakpoint
 
 
-@mixin pinkmagic( $rowitems: $magicrow, $padtop: $magictop, $padside: $magicside, $align: $magicalign, $before: 0, $after: 0, $margin: $defaultmargin ) {
+@mixin pinkmagic( $rowitems: $magicrow, $padtop: $magictop, $padside: $magicside, $align: $magicalign, $before: 0, $after: 0 ) {
 
 	$itemwidth: ( ( 100% + $padside ) / $rowitems ); 	// width of items at maximum row size
 	$lastwidth: ( $itemwidth - $padside ); 				// width of last item in row
@@ -143,11 +142,11 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 
 	display:		inline-block;
 	vertical-align:	$align;
-	margin-right: 	$margin; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
+	margin-right: 	-.275em; // Cancels out margin px issue with display:inline-block, may need to adjust based on body font;
 	width:			100%;
 	padding:		$padtop 0;	
 
-	@if $rowitems < 3 { // Less than 3 items per row
+	@if $rowitems <= 2 { // 2 items or less per row
 
 		@media only screen and ( min-width: $sm-bp ) {
 
@@ -165,17 +164,20 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					width: $lastwidth;
 				}
 			}
+
 		} // end $sm-bp
-	} // end 3 items or less per row
+
+	} // end 2 items or less per row
 
 	@else if $rowitems == 3 { // 3 items per row
 
-		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
+		@media only screen and ( min-width: $tiny-bp ) and ( max-width: $sm-bp ) {
 
 			$thisrow: 2; // intermediate row value, rounded up to nearest whole number
 			$itemwidth2: ( ( 100%  + $padside ) / $thisrow );
 			$lastwidth2: ( $itemwidth2 - $padside ); 	
 			$befrow: $before + $thisrow;	
+			$rowtotal2: $thisrow + before + after;
 
 			width: $itemwidth2;
 			padding-right: $padside;
@@ -186,10 +188,11 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 
 			@if $before > 0 or $after > 0 {
 
-				&:nth-of-type( #{$rowtotal}n+#{$befrow} ), &:nth-of-type( #{$rowtotal}n+#{$rowend} ) {
+				&:nth-of-type( #{$rowtotal2}n+#{$befrow} ), &:nth-of-type( #{$rowtotal2}n+#{$rowend} ) {
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
 
 			@else { // no before or after value
@@ -198,10 +201,12 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
+
 		} // end $sm-bp
 
-		@media only screen and ( min-width: $med-bp ) {
+		@media only screen and ( min-width: $sm-bp ) {
 
 			width: ( ( 100% + $padside ) / $rowitems );
 			padding-right: $padside;
@@ -216,13 +221,16 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth;
 				}
+
 			}
+
 		} // end $med-bp
+
 	} // end 3 items per row
 
 	@else if $rowitems > 3 and $rowitems <= 6 { // 4 to 6 items per row
 
-		@media only screen and ( min-width: $sm-bp ) and ( max-width: $lg-bp ) {
+		@media only screen and ( min-width: $tiny-bp ) and ( max-width: $med-bp ) {
 
 			$thisrow: ceil($rowitems/2); // intermediate row value, rounded up to nearest whole number
 			$itemwidth2: ( ( 100%  + $padside ) / $thisrow );
@@ -242,18 +250,22 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
 
 			@else { // no before or after value
+
 
 				&:nth-of-type( #{$thisrow}n+#{$thisrow} ){
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
+
 		} // end $sm-bp
 
-		@media only screen and ( min-width: $lg-bp ) {
+		@media only screen and ( min-width: $med-bp ) {
 
 			width: $itemwidth;
 			padding-right: $padside;
@@ -268,13 +280,16 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth;
 				}
+
 			}
-		} // end $lg-bp
+
+		} // end $med-bp
+
 	} // end 4 to 6 items per row
 
 	@else if $rowitems > 6 and $rowitems <= 9 { // 7 to 9 items per row
 
-		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
+		@media only screen and ( min-width: $tiny-bp ) and ( max-width: $sm-bp ) {
 
 			$thisrow: 	ceil($rowitems/4); // intermediate row value, rounded up to nearest whole number
 			$itemwidth2: ( ( 100%  + $padside ) / $thisrow );
@@ -308,10 +323,12 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
+
 		} // end $sm-bp
 
-		@media only screen and ( min-width: $med-bp ) and ( max-width: $lg-bp ) {
+		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
 
 			$thisrow: ceil($rowitems/2); // intermediate row value, rounded up to nearest whole number
 			$itemwidth2: ( ( 100%  + $padside ) / $thisrow );
@@ -331,6 +348,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
 
 			@else { // no before or after value
@@ -339,10 +357,12 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
+
 		} // end $med-bp
 
-		@media only screen and ( min-width: $lg-bp ) {
+		@media only screen and ( min-width: $med-bp ) {
 
 			width: 	$itemwidth;
 			padding-right: $padside;
@@ -357,13 +377,16 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth;
 				}
+
 			}
+
 		} // end $lg-bp
+
 	} // end 7 to 10 items per row
 
 	@else if $rowitems > 9 { // 10+ items per row
 
-		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
+		@media only screen and ( min-width: $tiny-bp ) and ( max-width: $sm-bp ) {
 
 			$thisrow: ceil($rowitems/6); // intermediate row value, rounded up to nearest whole number
 			$itemwidth2: ( ( 100%  + $padside ) / $thisrow );
@@ -397,10 +420,12 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
+
 		} // end $sm-bp
 
-		@media only screen and ( min-width: $med-bp ) and ( max-width: $lg-bp ) {
+		@media only screen and ( min-width: $sm-bp ) and ( max-width: $med-bp ) {
 
 			$thisrow: ceil($rowitems/4); // intermediate row value, rounded up to nearest whole number
 			$itemwidth2: ( ( 100%  + $padside ) / $thisrow );
@@ -434,7 +459,9 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
+
 		} // end $med-bp
 
 		@media only screen and ( min-width: $lg-bp ) and ( max-width: $xl-bp ) {
@@ -457,6 +484,7 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
 
 			@else { // no before or after value
@@ -465,7 +493,9 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 					padding-right:0;
 					width: $lastwidth2;
 				}
+
 			}
+
 		} // end $lg-bp
 
 		@media only screen and ( min-width: $xl-bp ) {
@@ -481,9 +511,12 @@ $xl-bp:			75em !default;		// Set your x-large breakpoint
 
 				&:nth-of-type( #{$rowtotal}n+#{$rowend} ){
 					padding-right:0;
-					width: $lastwidth;
 				}
+
 			}
+
 		} // end $xl-bp
+
 	} // end 10+ items per row
+
 }
